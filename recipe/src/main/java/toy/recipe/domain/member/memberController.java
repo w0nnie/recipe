@@ -3,6 +3,7 @@ package toy.recipe.domain.member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,7 +16,9 @@ public class memberController {
     @Autowired(required=false)
     private memberRepository memberRepository;
 
-    public memberController() {
+    @GetMapping("/join")
+    public String join(Model model){
+        return "pages/join";
     }
 
     @PostMapping("/login")
@@ -27,5 +30,11 @@ public class memberController {
             return "pages/error";
         }
             return "pages/login";
+    }
+
+    @PostMapping("/join")
+    public String join(member member){
+        memberRepository.save(member);
+        return "pages/join";
     }
 }

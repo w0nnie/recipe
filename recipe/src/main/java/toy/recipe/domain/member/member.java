@@ -1,6 +1,7 @@
 package toy.recipe.domain.member;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
@@ -16,6 +17,7 @@ public class member {
     private String id;
 
     private int password;
+
 
     public String getId() {
         return id;
