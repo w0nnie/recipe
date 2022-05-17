@@ -29,12 +29,13 @@ public class memberController {
         if(member ==null){
             return "pages/error";
         }
-            return "pages/login";
+            return "pages/main";
     }
 
     @PostMapping("/join")
     public String join(member member){
         memberRepository.save(member);
-        return "pages/join";
+        return "pages/home";
     }
+
 }
