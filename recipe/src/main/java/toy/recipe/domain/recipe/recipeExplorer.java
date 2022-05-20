@@ -6,9 +6,10 @@ import java.net.URL;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class recipeExplorer {
-    public static void main(String args[]){
+    public static void main(){
 
         String key = "7b0f637834474efcaae1";
 
