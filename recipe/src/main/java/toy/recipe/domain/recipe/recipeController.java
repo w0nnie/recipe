@@ -6,8 +6,13 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,7 +26,7 @@ public class recipeController {
     @Autowired
     recipeRepository recipeRepository;
 
-    @GetMapping("/recipe")
+    @GetMapping("/api")
     public String recipe() throws IOException{
 
         String key = "7b0f637834474efcaae1";
@@ -69,5 +74,16 @@ public class recipeController {
         }
 
         return "pages/home";
+    }
+
+    @GetMapping("/recipe")
+    public String list(Model model, @PageableDefault(size = 300) Pageable pageable){
+
+        Page<recipe> recipe = null;
+        recipe = recipeRepository.findAll(pageable);
+        System.out.println("여기" + recipe);
+        model.addAttribute("recipe",recipe);
+
+        return "pages/main";
     }
 }

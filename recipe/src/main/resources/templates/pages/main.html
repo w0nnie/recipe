@@ -9,7 +9,18 @@
 <body>
     <h1>Recipe</h1>
     <form method="post" action="/search">
-        <p>api 관련 데이터들</p>
+        <p>레시피 리스트</p>
+        <table class="table">
+            <tr>
+                <td style="font-weight: bold;text-align: center;">recipe명</td>
+                <td style="font-weight: bold;text-align: center;">recipe명</td>
+                <td style="font-weight: bold;text-align: center;">recipe명</td>
+                <td style="font-weight: bold;text-align: center;">recipe명</td>
+            </tr>
+            <tr th:each="recipe : ${recipe}">
+                <td th:text="${recipe.RCP_NM}">hi</td>
+            </tr>
+        </table>
     </form>
 </body>
 </html>
