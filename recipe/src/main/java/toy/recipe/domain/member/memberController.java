@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 public class memberController {
@@ -21,15 +22,21 @@ public class memberController {
         return "pages/join";
     }
 
-    @PostMapping("/login")
-    public String login(member member,Model model){
-        model.addAttribute("id",member.getId());
+    @GetMapping("/errors")
+    public String error(Model model){
+        return "pages/error";
+    }
 
+    @PostMapping("/login")
+    public RedirectView login(member member, Model model){
+        model.addAttribute("id",member.getId());
+        RedirectView error = new RedirectView("/errors",true);
+        RedirectView recipe = new RedirectView("/recipe", true);
         member = memberRepository.findById(member.getId());
-        if(member ==null){
-            return "pages/error";
+        if(member == null){
+            return error;
         }
-            return "pages/main";
+            return recipe;
     }
 
     @PostMapping("/join")
