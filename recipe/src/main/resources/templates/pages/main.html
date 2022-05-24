@@ -10,15 +10,28 @@
     <h1>Recipe</h1>
     <form method="post" action="/search">
         <p>레시피 리스트</p>
-        <table class="table">
+        <p>조회</p>
+        <select id="type">
+            <option value="볶이">볶이</option>
+            <option value="굽기">굽기</option>
+        </select>
+        <span>
+            <input type="range"/>
+        </span>
+        
+        <table class="table" border="1">
             <tr>
                 <td style="font-weight: bold;text-align: center;">recipe명</td>
-                <td style="font-weight: bold;text-align: center;">recipe명</td>
-                <td style="font-weight: bold;text-align: center;">recipe명</td>
-                <td style="font-weight: bold;text-align: center;">recipe명</td>
+                <td style="font-weight: bold;text-align: center;">조리분류</td>
+                <td style="font-weight: bold;text-align: center;">타입분류</td>
+                <td style="font-weight: bold;text-align: center;">이미지</td>
+                <!-- <td style="font-weight: bold;text-align: center;">recipe명</td> -->
             </tr>
-            <tr th:each="recipe : ${recipe}">
-                <td th:text="${recipe.RCP_NM}">hi</td>
+            <tr height="320" th:each="recipe : ${recipe}">
+                <td th:text="${recipe.RCP_NM}"></td>
+                <td th:text="${recipe.RCP_WAY2}"></td>
+                <td th:text="${recipe.RCP_PAT2}"></td>
+                <td width="320" th:style="'background-image:url('+@{${recipe.ATT_FILE_NO_MAIN}} +');'"></td>
             </tr>
         </table>
     </form>

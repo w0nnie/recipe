@@ -77,11 +77,10 @@ public class recipeController {
     }
 
     @GetMapping("/recipe")
-    public String list(Model model, @PageableDefault(size = 300) Pageable pageable){
+    public String list(Model model, @PageableDefault(size = 100) Pageable pageable){
 
         Page<recipe> recipe = null;
         recipe = recipeRepository.findAll(pageable);
-        System.out.println("여기" + recipe);
         model.addAttribute("recipe",recipe);
 
         return "pages/main";
