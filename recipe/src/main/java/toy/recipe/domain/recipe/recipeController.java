@@ -18,6 +18,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.List;
 
 
 @Controller
@@ -77,11 +78,14 @@ public class recipeController {
     }
 
     @GetMapping("/recipe")
-    public String list(Model model, @PageableDefault(size = 100) Pageable pageable){
+    public String list(Model model, @PageableDefault(size = 20) Pageable pageable){
 
         Page<recipe> recipe = null;
+//        List<recipe> recipe1 = null;
         recipe = recipeRepository.findAll(pageable);
+//        recipe1 =  recipeRepository.findAll();
         model.addAttribute("recipe",recipe);
+//        model.addAttribute("recipe1",recipe1);
 
         return "pages/main";
     }
