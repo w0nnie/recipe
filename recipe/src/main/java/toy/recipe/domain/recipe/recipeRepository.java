@@ -5,6 +5,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import toy.recipe.domain.member.member;
 
 import java.util.List;
 
@@ -20,5 +21,12 @@ public interface recipeRepository extends JpaRepository<recipe, Long> {
                     "FROM recipe"
     )
     List<recipeInterface> findName();
+
+    @Query(nativeQuery = true,
+            value = "SELECT *\n" +
+                    "FROM recipe\n" +
+                    "WHERE RCP_NM = ?1\n" +
+                    "ORDER BY RCP_SEQ")
+    recipe findByName(String name);
 
 }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
+import toy.recipe.domain.recipe.recipe;
 
 @Controller
 public class memberController {
@@ -31,7 +32,7 @@ public class memberController {
     public RedirectView login(member member, Model model){
         model.addAttribute("id",member.getId());
         RedirectView error = new RedirectView("/errors",true);
-        RedirectView recipe = new RedirectView("/recipe", true);
+        RedirectView recipe = new RedirectView("/recipe/main", true);
         member = memberRepository.findById(member.getId());
         if(member == null){
             return error;

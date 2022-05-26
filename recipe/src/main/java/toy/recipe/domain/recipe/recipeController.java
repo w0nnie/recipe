@@ -13,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,6 +24,7 @@ import java.util.List;
 
 
 @Controller
+@RequestMapping("/recipe")
 public class recipeController {
 
     @Autowired
@@ -77,7 +80,7 @@ public class recipeController {
         return "pages/home";
     }
 
-    @GetMapping("/recipe")
+    @GetMapping("/main")
     public String list(Model model, @PageableDefault(size = 20) Pageable pageable){
 
         Page<recipe> recipe = null;
@@ -88,5 +91,26 @@ public class recipeController {
 //        model.addAttribute("recipe1",recipe1);
 
         return "pages/main";
+    }
+
+    @PostMapping("/search")
+    public String listAx(Model model
+            , @RequestParam String path
+            , @RequestParam String resultFrag
+            , @RequestParam String name, @PageableDefault(size = 20) Pageable pageable) {
+
+        recipe recipe = new recipe();
+        Page<recipe> recipeList = null;
+
+        recipe = recipeRepository.findByName(name);
+
+        if (recipe == null){ //name 서칭 후 다른 name을 서칭하기전에 모든 list들을 출력해주는 부분
+            recipeList = recipeRepository.findAll(pageable);
+
+            model.addAttribute(resultFrag , recipeList);
+            return path + " :: #" + resultFrag;
+        }
+        model.addAttribute(resultFrag , recipe);
+        return path + " :: #" + resultFrag;
     }
 }
