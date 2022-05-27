@@ -29,4 +29,19 @@ public interface recipeRepository extends JpaRepository<recipe, Long> {
                     "ORDER BY RCP_SEQ")
     recipe findByName(String name);
 
+    @Query(nativeQuery = true,
+            value = "SELECT *\n" +
+                    "FROM recipe\n"+
+                    "WHERE RCP_WAY2 = ?1\n" +
+                    "AND INFO_ENG >= ?2\n" +
+                    "ORDER BY RCP_SEQ")
+    recipe findByTypeKcal(String type, String kcal);
+
+    @Query(nativeQuery = true,
+            value = "SELECT *\n" +
+                    "FROM recipe\n"+
+                    "WHERE RCP_PAT2 = ?1\n" +
+                    "AND INFO_ENG >= ?2\n" +
+                    "ORDER BY RCP_SEQ")
+    recipe findByWayKcal(String way, String kcal);
 }

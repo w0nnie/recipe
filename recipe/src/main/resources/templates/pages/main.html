@@ -16,14 +16,15 @@
         <form method="post" action="/search">
             <p>레시피 리스트</p>
             <p>조회</p>
-
+            <hr>
             <label>이름
-                <input id="name" type="text" placeholder="입력하시오." list="recipe" onchange="getProduct()">
+                <input id="name" type="text" style="width:400px;" placeholder="입력하시오." list="recipe" onchange="getProduct()">
                 <datalist id="recipe">
                     <option th:each="recipe : ${recipe}"
                         th:text="${recipe.RCP_NM}"></option>
                 </datalist>
             </label>
+            <hr>
             <label>타입
                 <select id="way">
                     <option value="">선택</option>
@@ -47,8 +48,9 @@
             </label>
 
             <label>칼로리
-                <input type="range" id="jsRange" value="800" min="0" max="800" step="200">
+                <input type="range" id="jsRange" value="800" min="0" max="800" step="200" onchange = "rangeChange()">
             </label>
+            <hr>
             <div id="getProductAxDiv">
                 <th:block th:if="${getProductAxDiv != null}">
                     <table class="table" border="1">
