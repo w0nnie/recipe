@@ -9,10 +9,10 @@ function getProductAx(path, resultFrag, name){
     });
 }
 
-function getTypeWayKcalAx(path, resultFrag,kcal,type,way){
+function getTypeWayKcalAx(path, resultFrag,wvalue,tvalue){
     $.ajax({
         url:"/recipe/search2",
-        data: {"path" : path, "resultFrag" : resultFrag, "kcal" : kcal, "type" : type, "way" : way},
+        data: {"path" : path, "resultFrag" : resultFrag, "type" : tvalue, "way" : wvalue},
         type:"POST",
         cache: false
     }).done(function (fragment){

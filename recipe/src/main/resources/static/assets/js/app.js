@@ -12,13 +12,10 @@ function getProduct(){
 function rangeChange(){
      var path = "pages/main";
      var resultFrag = 'getProductAxDiv';
-     const kvalue = kcal.value;
+    //  const kvalue = kcal.value;
      const wvalue = way.value;
      const tvalue = type.value;
-    console.log(kvalue);
-    console.log(wvalue);
-    console.log(tvalue);
-    //  getTypeWayKcalAx(path, resultFrag,kcal,type,way);
+    getTypeWayKcalAx(path, resultFrag,wvalue,tvalue);
 }
 
 

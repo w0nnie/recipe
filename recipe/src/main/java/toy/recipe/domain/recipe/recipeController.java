@@ -119,20 +119,30 @@ public class recipeController {
             , @RequestParam String resultFrag
             , @RequestParam String way
             , @RequestParam String type
-            , @RequestParam String kcal
+            , @RequestParam(required = false) String kcal
             , @PageableDefault(size = 300) Pageable pageable) {
+
 
         recipe recipe = new recipe();
         Page<recipe> recipeList = null;
 
         if (way == "") {
+            System.out.println("여기1");
             recipe = recipeRepository.findByTypeKcal(type, kcal);
             model.addAttribute(resultFrag, recipe);
             return path + " :: #" + resultFrag;
         } else if (type == "") {
+            System.out.println("여기2");
             recipe = recipeRepository.findByWayKcal(way, kcal);
             model.addAttribute(resultFrag, recipe);
+            return path + " :: #" + resultFrag;
+        }else{
+            System.out.println("여기3");
+            System.out.println("way" + way);
+            System.out.println("type" + type);
+            recipeList = recipeRepository.findByWayTypeKcal(way, type, pageable);
+            model.addAttribute(resultFrag, recipeList);
+            return path + " :: #" + resultFrag;
         }
-        return path + " :: #" + resultFrag;
     }
 }
