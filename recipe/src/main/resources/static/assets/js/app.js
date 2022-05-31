@@ -12,14 +12,9 @@ function getProduct(){
 function rangeChange(){
      var path = "pages/main";
      var resultFrag = 'getProductAxDiv';
-    //  const kvalue = kcal.value;
+     const kvalue =  kcal.value;
+     const kvalueInt = parseFloat(kvalue);
      const wvalue = way.value;
      const tvalue = type.value;
-    getTypeWayKcalAx(path, resultFrag,wvalue,tvalue);
+    getTypeWayKcalAx(path, resultFrag,wvalue,tvalue,kvalueInt);
 }
-
-
-
-// kcal.addEventListener("change",rangeChange);
-// way.addEventListener("change",rangeChange);
-// type.addEventListener("change",rangeChange);

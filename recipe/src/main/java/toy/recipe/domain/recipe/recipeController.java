@@ -58,7 +58,7 @@ public class recipeController {
             for (int i = 0; i < infoArr.size(); i++) {
                 JSONObject tmp = (JSONObject) infoArr.get(i);
                 recipe recipe = new recipe((String) tmp.get("RCP_SEQ"), (String) tmp.get("RCP_NM"), (String) tmp.get("RCP_WAY2"), (String) tmp.get("RCP_PAT2"), (String) tmp.get("INFO_WGT"),
-                        (String) tmp.get("INFO_ENG"), (String) tmp.get("INFO_CAR"), (String) tmp.get("INFO_PRO"), (String) tmp.get("INFO_FAT"), (String) tmp.get("INFO_NA"),
+                        (Float) tmp.get("INFO_ENG"), (String) tmp.get("INFO_CAR"), (String) tmp.get("INFO_PRO"), (String) tmp.get("INFO_FAT"), (String) tmp.get("INFO_NA"),
                         (String) tmp.get("HASH_TAG"), (String) tmp.get("ATT_FILE_NO_MAIN"), (String) tmp.get("ATT_FILE_NO_MK"), (String) tmp.get("RCP_PARTS_DTLS"), (String) tmp.get("MANUAL01"),
                         (String) tmp.get("MANUAL_IMG01"), (String) tmp.get("MANUAL02"), (String) tmp.get("MANUAL_IMG02"), (String) tmp.get("MANUAL03"), (String) tmp.get("MANUAL_IMG03"),
                         (String) tmp.get("MANUAL04"), (String) tmp.get("MANUAL_IMG04"), (String) tmp.get("MANUAL05"), (String) tmp.get("MANUAL_IMG05"), (String) tmp.get("MANUAL06"),
@@ -119,28 +119,28 @@ public class recipeController {
             , @RequestParam String resultFrag
             , @RequestParam String way
             , @RequestParam String type
-            , @RequestParam(required = false) String kcal
+            , @RequestParam Float kcal
             , @PageableDefault(size = 300) Pageable pageable) {
-
-
+        System.out.println("way" + way);
+        System.out.println("type" + type);
         recipe recipe = new recipe();
         Page<recipe> recipeList = null;
 
-        if (way == "") {
-            System.out.println("여기1");
-            recipe = recipeRepository.findByTypeKcal(type, kcal);
-            model.addAttribute(resultFrag, recipe);
+        if (way == "") {  //way를 선택하지않은경우
+            recipeList = recipeRepository.findByTypeKcal(type, kcal, pageable);
+            model.addAttribute(resultFrag, recipeList);
             return path + " :: #" + resultFrag;
-        } else if (type == "") {
-            System.out.println("여기2");
-            recipe = recipeRepository.findByWayKcal(way, kcal);
-            model.addAttribute(resultFrag, recipe);
+        } else if (type == "") { //type를 선택하지않은경우
+            recipeList = recipeRepository.findByWayKcal(way, kcal, pageable);
+            model.addAttribute(resultFrag, recipeList);
+            return path + " :: #" + resultFrag;
+        }else if(type =="" && way == ""){ //type, way를 선택하지않은경우
+            System.out.println("여기");
+            recipeList = recipeRepository.findByKcal(kcal,pageable);
+            model.addAttribute(resultFrag, recipeList);
             return path + " :: #" + resultFrag;
         }else{
-            System.out.println("여기3");
-            System.out.println("way" + way);
-            System.out.println("type" + type);
-            recipeList = recipeRepository.findByWayTypeKcal(way, type, pageable);
+            recipeList = recipeRepository.findByWayTypeKcal(way, type, kcal, pageable);
             model.addAttribute(resultFrag, recipeList);
             return path + " :: #" + resultFrag;
         }

@@ -19,7 +19,7 @@ public class recipe {
     private String RCP_WAY2;
     private String RCP_PAT2;
     private String INFO_WGT;
-    private String INFO_ENG;
+    private Float INFO_ENG;
     private String INFO_CAR;
     private String INFO_PRO;
     private String INFO_FAT;
@@ -90,7 +90,7 @@ public class recipe {
         return INFO_WGT;
     }
 
-    public String getINFO_ENG() {
+    public Float getINFO_ENG() {
         return INFO_ENG;
     }
 
@@ -286,7 +286,7 @@ public class recipe {
         return MANUAL_IMG20;
     }
 
-    public recipe(String RCP_SEQ, String RCP_NM, String RCP_WAY2, String RCP_PAT2, String INFO_WGT, String INFO_ENG, String INFO_CAR, String INFO_PRO, String INFO_FAT, String INFO_NA, String HASH_TAG, String ATT_FILE_NO_MAIN, String ATT_FILE_NO_MK, String RCP_PARTS_DTLS, String MANUAL01, String MANUAL_IMG01, String MANUAL02, String MANUAL_IMG02, String MANUAL03, String MANUAL_IMG03, String MANUAL04, String MANUAL_IMG04, String MANUAL05, String MANUAL_IMG05, String MANUAL06, String MANUAL_IMG06, String MANUAL07, String MANUAL_IMG07, String MANUAL08, String MANUAL_IMG08, String MANUAL09, String MANUAL_IMG09, String MANUAL10, String MANUAL_IMG10, String MANUAL11, String MANUAL_IMG11, String MANUAL12, String MANUAL_IMG12, String MANUAL13, String MANUAL_IMG13, String MANUAL14, String MANUAL_IMG14, String MANUAL15, String MANUAL_IMG15, String MANUAL16, String MANUAL_IMG16, String MANUAL17, String MANUAL_IMG17, String MANUAL18, String MANUAL_IMG18, String MANUAL19, String MANUAL_IMG19, String MANUAL20, String MANUAL_IMG20) {
+    public recipe(String RCP_SEQ, String RCP_NM, String RCP_WAY2, String RCP_PAT2, String INFO_WGT, Float INFO_ENG, String INFO_CAR, String INFO_PRO, String INFO_FAT, String INFO_NA, String HASH_TAG, String ATT_FILE_NO_MAIN, String ATT_FILE_NO_MK, String RCP_PARTS_DTLS, String MANUAL01, String MANUAL_IMG01, String MANUAL02, String MANUAL_IMG02, String MANUAL03, String MANUAL_IMG03, String MANUAL04, String MANUAL_IMG04, String MANUAL05, String MANUAL_IMG05, String MANUAL06, String MANUAL_IMG06, String MANUAL07, String MANUAL_IMG07, String MANUAL08, String MANUAL_IMG08, String MANUAL09, String MANUAL_IMG09, String MANUAL10, String MANUAL_IMG10, String MANUAL11, String MANUAL_IMG11, String MANUAL12, String MANUAL_IMG12, String MANUAL13, String MANUAL_IMG13, String MANUAL14, String MANUAL_IMG14, String MANUAL15, String MANUAL_IMG15, String MANUAL16, String MANUAL_IMG16, String MANUAL17, String MANUAL_IMG17, String MANUAL18, String MANUAL_IMG18, String MANUAL19, String MANUAL_IMG19, String MANUAL20, String MANUAL_IMG20) {
         this.RCP_SEQ = RCP_SEQ;
         this.RCP_NM = RCP_NM;
         this.RCP_WAY2 = RCP_WAY2;
