@@ -121,25 +121,27 @@ public class recipeController {
             , @RequestParam String type
             , @RequestParam Float kcal
             , @PageableDefault(size = 300) Pageable pageable) {
-        System.out.println("way" + way);
-        System.out.println("type" + type);
+        System.out.println("way " + way + " type " + type);
         recipe recipe = new recipe();
         Page<recipe> recipeList = null;
 
-        if (way == "") {  //way를 선택하지않은경우
+        if (way == "" && type != "") {  //way를 선택하지않은경우
+            System.out.println("여기1");
             recipeList = recipeRepository.findByTypeKcal(type, kcal, pageable);
             model.addAttribute(resultFrag, recipeList);
             return path + " :: #" + resultFrag;
-        } else if (type == "") { //type를 선택하지않은경우
+        } else if (type == "" && way != "") { //type를 선택하지않은경우
+            System.out.println("여기2");
             recipeList = recipeRepository.findByWayKcal(way, kcal, pageable);
             model.addAttribute(resultFrag, recipeList);
             return path + " :: #" + resultFrag;
         }else if(type =="" && way == ""){ //type, way를 선택하지않은경우
-            System.out.println("여기");
+            System.out.println("여기3"); //type== && 조건식 찾아보기
             recipeList = recipeRepository.findByKcal(kcal,pageable);
             model.addAttribute(resultFrag, recipeList);
             return path + " :: #" + resultFrag;
         }else{
+            System.out.println("여기4");
             recipeList = recipeRepository.findByWayTypeKcal(way, type, kcal, pageable);
             model.addAttribute(resultFrag, recipeList);
             return path + " :: #" + resultFrag;
