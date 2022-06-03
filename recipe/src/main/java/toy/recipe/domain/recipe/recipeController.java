@@ -123,7 +123,8 @@ public class recipeController {
             , @PageableDefault(size = 300) Pageable pageable) {
         System.out.println("way " + way + " type " + type);
         recipe recipe = new recipe();
-        Page<recipe> recipeList = null;
+//        Page<recipe> recipeList = null;
+        List<recipe> recipeList = null;
 
         if (way == "" && type != "") {  //way를 선택하지않은경우
             System.out.println("여기1");
@@ -137,7 +138,8 @@ public class recipeController {
             return path + " :: #" + resultFrag;
         }else if(type =="" && way == ""){ //type, way를 선택하지않은경우
             System.out.println("여기3"); //type== && 조건식 찾아보기
-            recipeList = recipeRepository.findByKcal(kcal,pageable);
+            recipeList = recipeRepository.findByKcal(kcal, pageable); // Page로 받았을땐 bug
+//            recipeList = recipeRepository.findByKcal1(kcal,pageable); // Page로 받았을땐 bug
             model.addAttribute(resultFrag, recipeList);
             return path + " :: #" + resultFrag;
         }else{

@@ -35,7 +35,7 @@ public interface recipeRepository extends JpaRepository<recipe, Long> {
                     "WHERE RCP_PAT2 = ?1\n" +
                     "AND INFO_ENG <= ?2\n" +
                     "ORDER BY RCP_SEQ")
-    Page<recipe> findByTypeKcal(String type, Float kcal, Pageable pageable);
+    List<recipe> findByTypeKcal(String type, Float kcal, Pageable pageable);
 
     @Query(nativeQuery = true,
             value = "SELECT *\n" +
@@ -43,7 +43,7 @@ public interface recipeRepository extends JpaRepository<recipe, Long> {
                     "WHERE RCP_WAY2 = ?1\n" +
                     "AND INFO_ENG <= ?2\n" +
                     "ORDER BY RCP_SEQ")
-    Page<recipe> findByWayKcal(String way, Float kcal, Pageable pageable);
+    List<recipe> findByWayKcal(String way, Float kcal, Pageable pageable);
 
     @Query(nativeQuery = true,
             value = "SELECT *\n" +
@@ -52,12 +52,13 @@ public interface recipeRepository extends JpaRepository<recipe, Long> {
                     "AND RCP_PAT2 = ?2\n" +
                     "AND INFO_ENG <= ?3\n" +
                     "ORDER BY RCP_SEQ")
-    Page<recipe> findByWayTypeKcal(String way, String type, Float kcal, Pageable pageable);
+    List<recipe> findByWayTypeKcal(String way, String type, Float kcal, Pageable pageable);
+
 
     @Query(nativeQuery = true,
             value = "SELECT *\n" +
-                    "FROM recipe\n"+
+                    "FROM recipe\n" +
                     "WHERE INFO_ENG <= ?1\n" +
                     "ORDER BY RCP_SEQ")
-    Page<recipe> findByKcal(Float kcal, Pageable pageable);
+    List<recipe> findByKcal(Float kcal, Pageable pageable);
 }
