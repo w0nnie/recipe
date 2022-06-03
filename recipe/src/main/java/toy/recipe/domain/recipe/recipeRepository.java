@@ -12,7 +12,6 @@ import java.util.List;
 @Repository
 public interface recipeRepository extends JpaRepository<recipe, Long> {
 
-    Page<recipe> findAll(Pageable pageable);
 
     List<recipe> findAll();
 

@@ -92,6 +92,21 @@ public class recipeController {
         return "pages/main";
     }
 
+    @GetMapping("/ingredient")
+    public String ingredient(Model model, @PageableDefault(size = 300) Pageable pageable) {
+
+        Page<recipe> recipe = null;
+//        List<recipe> recipe1 = null;
+        recipe = recipeRepository.findAll(pageable);
+//        recipe1 =  recipeRepository.findAll();
+//        model.addAttribute("recipe", recipe);
+//        model.addAttribute("recipe1",recipe1);
+
+        return "pages/ingredient";
+    }
+
+
+
     @PostMapping("/search")
     public String listAx(Model model
             , @RequestParam String path
@@ -127,7 +142,6 @@ public class recipeController {
         List<recipe> recipeList = null;
 
         if (way == "" && type != "") {  //way를 선택하지않은경우
-            System.out.println("여기1");
             recipeList = recipeRepository.findByTypeKcal(type, kcal, pageable);
             model.addAttribute(resultFrag, recipeList);
             return path + " :: #" + resultFrag;
@@ -137,16 +151,15 @@ public class recipeController {
             model.addAttribute(resultFrag, recipeList);
             return path + " :: #" + resultFrag;
         }else if(type =="" && way == ""){ //type, way를 선택하지않은경우
-            System.out.println("여기3"); //type== && 조건식 찾아보기
-            recipeList = recipeRepository.findByKcal(kcal, pageable); // Page로 받았을땐 bug
-//            recipeList = recipeRepository.findByKcal1(kcal,pageable); // Page로 받았을땐 bug
+            recipeList = recipeRepository.findByKcal(kcal, pageable);
             model.addAttribute(resultFrag, recipeList);
             return path + " :: #" + resultFrag;
         }else{
-            System.out.println("여기4");
             recipeList = recipeRepository.findByWayTypeKcal(way, type, kcal, pageable);
             model.addAttribute(resultFrag, recipeList);
             return path + " :: #" + resultFrag;
         }
     }
+
+
 }

@@ -8,9 +8,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- 공통 파일들 -->
-    
+    <style type="text/css">
+                 li {
+                    float: left;
+                    list-style: none;
+                    margin-left: 20px;
+                   }
+    </style>
 </head>
 <body>
+    <div th:replace="fragments/header :: fragment-header"></div>
     <div layout:fragment="content"></div>
     <script th:src="@{/assets/js/jquery.min.js}"></script>
     <script th:src="@{/assets/js/app.js}"></script>
