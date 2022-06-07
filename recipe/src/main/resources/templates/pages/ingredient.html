@@ -1,19 +1,42 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    layout:decorate="~{layouts/layout}">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layouts/layout}"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <div layout:fragment="content" class="container bg-white page">
-        <br>
-        <h1>Recipe</h1>
-        <form>
-            <p>재료 리스트</p>
-            <hr>
+      <br />
+      <h1>Recipe</h1>
+      <form>
+        <p>재료 리스트</p>
+        <hr />
+        <span>고기류</span>
+        <br />
+        <label><input type="checkbox" value="돼지고기" />돼지고기</label>
+        <label><input type="checkbox" value="소고기" />소고기</label>
+        <label><input type="checkbox" value="닭고기" />닭고기</label>
+        <label><input type="checkbox" value="생선" />생선</label>
+        <hr />
+        <span>채소류</span>
+        <br />
+        <label><input type="checkbox" value="배추" />배추</label>
+        <label><input type="checkbox" value="무" />무</label>
+        <label><input type="checkbox" value="당근" />당근</label>
+        <label><input type="checkbox" value="고구마" />고구마</label>
+        <hr />
+        <span>쌀</span>
+        <br />
+        <label><input type="checkbox" value="쌀" />쌀</label>
+        <label><input type="checkbox" value="잡곡" />잡곡</label>
+        <label><input type="checkbox" value="쌀" />쌀</label>
+      </form>
     </div>
-</body>
+  </body>
 </html>
