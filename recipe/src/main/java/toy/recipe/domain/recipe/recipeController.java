@@ -136,7 +136,6 @@ public class recipeController {
             , @RequestParam String type
             , @RequestParam Float kcal
             , @PageableDefault(size = 300) Pageable pageable) {
-        System.out.println("way " + way + " type " + type);
         recipe recipe = new recipe();
 //        Page<recipe> recipeList = null;
         List<recipe> recipeList = null;
@@ -146,7 +145,6 @@ public class recipeController {
             model.addAttribute(resultFrag, recipeList);
             return path + " :: #" + resultFrag;
         } else if (type == "" && way != "") { //type를 선택하지않은경우
-            System.out.println("여기2");
             recipeList = recipeRepository.findByWayKcal(way, kcal, pageable);
             model.addAttribute(resultFrag, recipeList);
             return path + " :: #" + resultFrag;
