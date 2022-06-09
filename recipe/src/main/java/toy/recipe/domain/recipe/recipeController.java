@@ -136,25 +136,43 @@ public class recipeController {
             , @RequestParam String type
             , @RequestParam Float kcal
             , @PageableDefault(size = 300) Pageable pageable) {
-        recipe recipe = new recipe();
-//        Page<recipe> recipeList = null;
+
         List<recipe> recipeList = null;
 
         if (way == "" && type != "") {  //way를 선택하지않은경우
             recipeList = recipeRepository.findByTypeKcal(type, kcal, pageable);
+            if(recipeList.isEmpty()) {
+                recipeList = null;
+            }
             model.addAttribute(resultFrag, recipeList);
+
             return path + " :: #" + resultFrag;
+
         } else if (type == "" && way != "") { //type를 선택하지않은경우
             recipeList = recipeRepository.findByWayKcal(way, kcal, pageable);
+            if(recipeList.isEmpty()) {
+                recipeList = null;
+            }
             model.addAttribute(resultFrag, recipeList);
+
             return path + " :: #" + resultFrag;
+
         }else if(type =="" && way == ""){ //type, way를 선택하지않은경우
             recipeList = recipeRepository.findByKcal(kcal, pageable);
+            if(recipeList.isEmpty()) {
+                recipeList = null;
+            }
             model.addAttribute(resultFrag, recipeList);
+
             return path + " :: #" + resultFrag;
+
         }else{
             recipeList = recipeRepository.findByWayTypeKcal(way, type, kcal, pageable);
+            if(recipeList.isEmpty()) {
+                recipeList = null;
+            }
             model.addAttribute(resultFrag, recipeList);
+
             return path + " :: #" + resultFrag;
         }
     }
