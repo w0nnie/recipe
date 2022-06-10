@@ -18,3 +18,16 @@ function rangeChange(){
      const tvalue = type.value;
     getTypeWayKcalAx(path, resultFrag,wvalue,tvalue,kvalueInt);
 }
+
+
+function getCheckboxValue(event){
+    let result = '';
+    console.log(event.target.value);
+    // if(event.target.checked)  {
+    //     result = event.target.value;
+    //     console.log(result)
+    //  }else {
+    //     result = '';
+    //     console.log(result)
+    //  }
+}
