@@ -32,10 +32,11 @@ function getCheckboxValue(event) {
   var ingredient_length = document.getElementsByName("ingredient").length;
   if(event.checked == true){ // 체크시
     for(var i = 0; i<ingredient_length; i++){
-      if(document.getElementsByName("ingredient")[i].checked == true)
+      if(document.getElementsByName("ingredient")[i].checked == true){
         if(ingredient[i] != null)
           console.log(ingredient[i].value);
           getIngredient(ingredient[i].value);
+      }
     }
   }else{ //체크해제시 
     for(var i = 0; i<ingredient_length; i++){

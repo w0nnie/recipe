@@ -183,13 +183,12 @@ public class recipeController {
             , @RequestParam String resultFrag
             , @RequestParam String ingredient
             , @PageableDefault(size = 300) Pageable pageable) {
-
+        System.out.println("여기" + ingredient);
         List<recipe> recipeList = null;
 
         recipeList = recipeRepository.findByIngredient(ingredient,pageable);
 
         model.addAttribute(resultFrag, recipeList);
-        System.out.println("여기"+recipeList);
         return path + " :: #" + resultFrag;
     }
 }
