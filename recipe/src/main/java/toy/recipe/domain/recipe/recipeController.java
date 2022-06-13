@@ -177,5 +177,19 @@ public class recipeController {
         }
     }
 
+    @PostMapping("/ingredient")
+    public String ingredientAx(Model model
+            , @RequestParam String path
+            , @RequestParam String resultFrag
+            , @RequestParam String ingredient
+            , @PageableDefault(size = 300) Pageable pageable) {
 
+        List<recipe> recipeList = null;
+
+        recipeList = recipeRepository.findByIngredient(ingredient,pageable);
+
+        model.addAttribute(resultFrag, recipeList);
+        System.out.println("여기"+recipeList);
+        return path + " :: #" + resultFrag;
+    }
 }

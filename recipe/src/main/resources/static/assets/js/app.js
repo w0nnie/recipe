@@ -1,6 +1,7 @@
 const kcal = document.getElementById("jsRange");
 const way = document.getElementById("way");
 const type = document.getElementById("type");
+const ingredient = document.getElementsByName("ingredient");
 
 function getProduct() {
   var path = "pages/main";
@@ -9,7 +10,7 @@ function getProduct() {
   getProductAx(path, resultFrag, name);
 }
 
-function rangeChange() {
+function getRangeChange() {
   var path = "pages/main";
   var resultFrag = "getProductAxDiv";
   const kvalue = kcal.value;
@@ -19,23 +20,38 @@ function rangeChange() {
   getTypeWayKcalAx(path, resultFrag, wvalue, tvalue, kvalueInt);
 }
 
-function getCheckboxValue(event) {
-  console.log(event.value);
-  // if(event.target.checked)  {
-  //     result = event.target.value;   
-  //     console.log(result)
-  //  }else {
-  //     result = '';
-  //     console.log(result)
-  //  }
+function getIngredient(event){
+  var path ="pages/ingredient";
+  var resultFrag = "getIngredientAxDiv";
+  console.log("여기"+event);
+  getIngredientAx(path, resultFrag, event);
+
 }
 
-$('#check').click(function(){
-    var checked = $('#check').is(':checked');
-
-    if(checked){
-        console.log($('#check').val());
-    }else{
-        console.log(" ");
+function getCheckboxValue(event) {
+  var ingredient_length = document.getElementsByName("ingredient").length;
+  if(event.checked == true){ // 체크시
+    for(var i = 0; i<ingredient_length; i++){
+      if(document.getElementsByName("ingredient")[i].checked == true)
+        if(ingredient[i] != null)
+          console.log(ingredient[i].value);
+          getIngredient(ingredient[i].value);
     }
-})
+  }else{ //체크해제시 
+    for(var i = 0; i<ingredient_length; i++){
+      if(document.getElementsByName("ingredient")[i].checked == true)
+        if(ingredient[i] != null)
+          console.log(ingredient[i].value);
+    }
+  }
+}
+
+// $('#check').click(function(){
+//     var checked = $('#check').is(':checked');
+
+//     if(checked){
+//         console.log($('#check').val());
+//     }else{
+//         console.log(" ");
+//     }
+// })

@@ -19,3 +19,14 @@ function getTypeWayKcalAx(path, resultFrag,wvalue,tvalue,kvalueInt){
         $("#" + resultFrag).replaceWith(fragment);
     });
 }
+
+function getIngredientAx(path, resultFrag, ingredient){
+    $.ajax({
+        url:"/recipe/ingredient",
+        data: {"path" : path, "resultFrag" : resultFrag, "ingredient" : ingredient},
+        type:"POST",
+        cache: false
+    }).done(function (fragment){
+        $("#" + resultFrag).replaceWith(fragment);
+    });
+}

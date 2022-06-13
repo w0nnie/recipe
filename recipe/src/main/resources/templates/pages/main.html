@@ -26,7 +26,7 @@
         </label>
         <hr>
         <label>타입
-            <select id="way" onchange = "rangeChange()">
+            <select id="way" onchange = "getRangeChange()">
                 <option value="">선택</option>
                 <option value="볶기">볶기</option>
                 <option value="굽기">굽기</option>
@@ -37,7 +37,7 @@
         </label>
 
         <label>분류
-            <select id="type" onchange = "rangeChange()">
+            <select id="type" onchange = "getRangeChange()">
                 <option value="">선택</option>
                 <option value="밥">밥</option>
                 <option value="반찬">반찬</option>
@@ -48,7 +48,7 @@
         </label>
 
         <label>칼로리
-            <input type="range" id="jsRange" value="1000" min="0" max="800" step="100" onchange = "rangeChange()" oninput="document.getElementById('rangeValue').innerHTML=this.value;">
+            <input type="range" id="jsRange" value="1000" min="0" max="800" step="100" onchange = "getRangeChange()" oninput="document.getElementById('rangeValue').innerHTML=this.value;">
             <span id="rangeValue">800</span>
         </label>
         <hr>

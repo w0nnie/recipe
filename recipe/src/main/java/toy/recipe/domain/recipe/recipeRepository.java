@@ -60,4 +60,11 @@ public interface recipeRepository extends JpaRepository<recipe, Long> {
                     "WHERE INFO_ENG <= ?1\n" +
                     "ORDER BY RCP_SEQ")
     List<recipe> findByKcal(Float kcal, Pageable pageable);
+
+    @Query(nativeQuery = true,
+            value = "SELECT *\n" +
+                    "FROM recipe\n" +
+                    "WHERE RCP_PARTS_DTLS LIKE '%?1%'\n" +
+                    "ORDER BY RCP_SEQ")
+    List<recipe> findByIngredient(String ingredient, Pageable pageable);
 }
