@@ -183,6 +183,9 @@ public class recipeController {
             , @RequestParam String resultFrag
             , @RequestParam String ingredient
             , @PageableDefault(size = 300) Pageable pageable) {
+        for(int i =0; i <= ingredient.length(); i++){
+            System.out.println(i);
+        }
         System.out.println("여기" + ingredient);
         List<recipe> recipeList = null;
 

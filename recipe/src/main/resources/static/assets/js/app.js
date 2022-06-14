@@ -20,21 +20,21 @@ function getRangeChange() {
   getTypeWayKcalAx(path, resultFrag, wvalue, tvalue, kvalueInt);
 }
 
-function getIngredient(event){
+function getIngredient(event){ // ingredient.value가 들어온다.
   var path ="pages/ingredient";
   var resultFrag = "getIngredientAxDiv";
-  console.log("여기"+event);
+  console.log("여기 "+event);
   getIngredientAx(path, resultFrag, event);
 
 }
 
-function getCheckboxValue(event) {
+function getCheckboxValue(event) { //input태그 전체가 들어온다.
+  console.log(event);
   var ingredient_length = document.getElementsByName("ingredient").length;
   if(event.checked == true){ // 체크시
     for(var i = 0; i<ingredient_length; i++){
       if(document.getElementsByName("ingredient")[i].checked == true){
         if(ingredient[i] != null)
-          console.log(ingredient[i].value);
           getIngredient(ingredient[i].value);
       }
     }

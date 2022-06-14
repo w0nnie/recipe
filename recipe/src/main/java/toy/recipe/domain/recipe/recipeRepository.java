@@ -65,6 +65,7 @@ public interface recipeRepository extends JpaRepository<recipe, Long> {
             value = "SELECT *\n" +
                     "FROM recipe\n" +
                     "WHERE RCP_PARTS_DTLS LIKE %?1%\n" +
+//                    "AND RCP_PARTS_DTLS LIKE %?2%\n" +
                     "ORDER BY RCP_SEQ")
     List<recipe> findByIngredient(String ingredient, Pageable pageable);
 }
