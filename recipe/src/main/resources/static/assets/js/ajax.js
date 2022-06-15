@@ -20,10 +20,11 @@ function getTypeWayKcalAx(path, resultFrag,wvalue,tvalue,kvalueInt){
     });
 }
 
-function getIngredientAx(path, resultFrag, ingredient){
+function getIngredientAx(path, resultFrag, ingredients){
+    console.log(ingredients);
     $.ajax({
         url:"/recipe/ingredient",
-        data: {"path" : path, "resultFrag" : resultFrag, "ingredient" : ingredient},
+        data: {"path" : path, "resultFrag" : resultFrag, "ingredients" : ingredients},
         type:"POST",
         cache: false
     }).done(function (fragment){
