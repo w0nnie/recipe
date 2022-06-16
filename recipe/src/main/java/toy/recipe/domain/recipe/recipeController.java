@@ -182,9 +182,25 @@ public class recipeController {
             , @RequestParam String path
             , @RequestParam String resultFrag
             , @PageableDefault(size = 30) Pageable pageable
-            , @RequestParam List<String> ingredients) throws IOException{
+            , @RequestParam(name="ingredients[]") List<String> ingredients) throws IOException{
         List<recipe> recipeList = null;
-        System.out.println(ingredients.size());
+        int count = ingredients.size();
+
+        for (String i : ingredients) {
+            if(count == 1){
+                String value = ingredients.get(0);
+                recipeList = recipeRepository.findByIngredient(value,pageable);
+                model.addAttribute(resultFrag, recipeList);
+            }
+
+            if(count == 2) {
+                String strQry = "WHERE RCP_PARTS_DTLS LIKE %" + ingredients.get(0) + "% AND RCP_PARTS_DTLS LIKE %" + ingredients.get(1) + "%";
+                String value = ingredients.get(0) + ingredients.get(1);
+                System.out.println(strQry);
+                recipeList = recipeRepository.findByIngredients(strQry,pageable);
+                model.addAttribute(resultFrag, recipeList);
+            }
+        }
 
 //        for (String i : ingredient){
 //

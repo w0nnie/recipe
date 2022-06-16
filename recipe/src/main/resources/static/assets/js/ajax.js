@@ -21,7 +21,6 @@ function getTypeWayKcalAx(path, resultFrag,wvalue,tvalue,kvalueInt){
 }
 
 function getIngredientAx(path, resultFrag, ingredients){
-    console.log(ingredients);
     $.ajax({
         url:"/recipe/ingredient",
         data: {"path" : path, "resultFrag" : resultFrag, "ingredients" : ingredients},

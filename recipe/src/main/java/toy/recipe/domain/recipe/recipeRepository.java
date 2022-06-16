@@ -67,12 +67,11 @@ public interface recipeRepository extends JpaRepository<recipe, Long> {
                     "WHERE RCP_PARTS_DTLS LIKE %?1%\n" +
 //                    "AND RCP_PARTS_DTLS LIKE %?2%\n" +
                     "ORDER BY RCP_SEQ")
-    List<recipe> findByIngredient(List ingredient, Pageable pageable);
+    List<recipe> findByIngredient(String value, Pageable pageable);
 
-//    @Query(nativeQuery = true,
-//            value = "SELECT *\n" +
-//                    "FROM recipe\n" +
-//                    "?1 \n" +
-//                    "ORDER BY RCP_SEQ")
-//    List<recipe> findByIngredient(String strQry, Pageable pageable);
+    @Query(nativeQuery = true,
+            value = "SELECT *\n" +
+                    "FROM recipe ?1\n" +
+                    "ORDER BY RCP_SEQ")
+    List<recipe> findByIngredients(String strQry, Pageable pageable);
 }
