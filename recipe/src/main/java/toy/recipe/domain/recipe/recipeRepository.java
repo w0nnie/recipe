@@ -71,7 +71,7 @@ public interface recipeRepository extends JpaRepository<recipe, Long> {
 
     @Query(nativeQuery = true,
             value = "SELECT *\n" +
-                    "FROM recipe ?1\n" +
+                    "FROM recipe WHERE ?\n" +
                     "ORDER BY RCP_SEQ")
     List<recipe> findByIngredients(String strQry, Pageable pageable);
 }

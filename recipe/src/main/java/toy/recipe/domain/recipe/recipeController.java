@@ -187,26 +187,21 @@ public class recipeController {
         int count = ingredients.size();
 
         for (String i : ingredients) {
-            if(count == 1){
+            if(count == 1) {
                 String value = ingredients.get(0);
                 recipeList = recipeRepository.findByIngredient(value,pageable);
                 model.addAttribute(resultFrag, recipeList);
             }
 
             if(count == 2) {
-                String strQry = "WHERE RCP_PARTS_DTLS LIKE %" + ingredients.get(0) + "% AND RCP_PARTS_DTLS LIKE %" + ingredients.get(1) + "%";
-                String value = ingredients.get(0) + ingredients.get(1);
+                String strQry = "RCP_PARTS_DTLS LIKE %" + ingredients.get(0) + "% AND RCP_PARTS_DTLS LIKE %" + ingredients.get(1) + "%";
                 System.out.println(strQry);
                 recipeList = recipeRepository.findByIngredients(strQry,pageable);
+                System.out.println(recipeList);
                 model.addAttribute(resultFrag, recipeList);
             }
         }
 
-//        for (String i : ingredient){
-//
-//        }
-//        recipeList = recipeRepository.findByIngredient(ingredient,pageable);
-//        model.addAttribute(resultFrag, recipeList);
         return path + " :: #" + resultFrag;
     }
 }
