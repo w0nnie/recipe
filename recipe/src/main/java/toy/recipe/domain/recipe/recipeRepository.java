@@ -65,13 +65,23 @@ public interface recipeRepository extends JpaRepository<recipe, Long> {
             value = "SELECT *\n" +
                     "FROM recipe\n" +
                     "WHERE RCP_PARTS_DTLS LIKE %?1%\n" +
-//                    "AND RCP_PARTS_DTLS LIKE %?2%\n" +
                     "ORDER BY RCP_SEQ")
     List<recipe> findByIngredient(String value, Pageable pageable);
 
     @Query(nativeQuery = true,
             value = "SELECT *\n" +
-                    "FROM recipe WHERE ?\n" +
+                    "FROM recipe\n" +
+                    "WHERE RCP_PARTS_DTLS LIKE %?1%\n" +
+                    "AND RCP_PARTS_DTLS LIKE %?2%\n" +
                     "ORDER BY RCP_SEQ")
-    List<recipe> findByIngredients(String strQry, Pageable pageable);
+    List<recipe> findByIngredients(String value1, String value2, Pageable pageable);
+
+    @Query(nativeQuery = true,
+            value = "SELECT *\n" +
+                    "FROM recipe\n" +
+                    "WHERE RCP_PARTS_DTLS LIKE %?1%\n" +
+                    "AND RCP_PARTS_DTLS LIKE %?2%\n" +
+                    "AND RCP_PARTS_DTLS LIKE %?3%\n" +
+                    "ORDER BY RCP_SEQ")
+    List<recipe> findByIngredient3(String value1, String value2, String value3, Pageable pageable);
 }

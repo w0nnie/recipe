@@ -194,10 +194,19 @@ public class recipeController {
             }
 
             if(count == 2) {
-                String strQry = "RCP_PARTS_DTLS LIKE %" + ingredients.get(0) + "% AND RCP_PARTS_DTLS LIKE %" + ingredients.get(1) + "%";
-                System.out.println(strQry);
-                recipeList = recipeRepository.findByIngredients(strQry,pageable);
-                System.out.println(recipeList);
+//                String strQry = "RCP_PARTS_DTLS LIKE %" + ingredients.get(0) + "% AND RCP_PARTS_DTLS LIKE %" + ingredients.get(1) + "%";
+//                System.out.println(strQry);
+                String value1 = ingredients.get(0);
+                String value2 = ingredients.get(1);
+                recipeList = recipeRepository.findByIngredients(value1,value2,pageable);
+                model.addAttribute(resultFrag, recipeList);
+            }
+
+            if(count == 3) {
+                String value1 = ingredients.get(0);
+                String value2 = ingredients.get(1);
+                String value3 = ingredients.get(2);
+                recipeList = recipeRepository.findByIngredient3(value1,value2,value3,pageable);
                 model.addAttribute(resultFrag, recipeList);
             }
         }
