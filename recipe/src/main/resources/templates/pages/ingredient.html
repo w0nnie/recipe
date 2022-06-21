@@ -53,16 +53,16 @@
                     </tr>
                     <tr height="200" th:each="recipe : ${getIngredientAxDiv}">
                         <td>
-                            <a href="#" th:text="${recipe.RCP_NM}"
+                            <a href="#" th:text="${recipe.rcpName}"
                                 data-bs-toggle="modal" >
                                 <!-- data-bs-target="#vanAddModal" -->
                             </a>
                         </td>
-                        <td th:text="${recipe.RCP_WAY2}"></td>
-                        <td th:text="${recipe.RCP_PAT2}"></td>
-                        <td width="200" th:style="'background-image:url('+@{${recipe.ATT_FILE_NO_MAIN}} +'); background-size: 200px 200px;'"></td>
-                        <td th:text="${recipe.RCP_PARTS_DTLS}"></td>
-                        <td th:text="'칼로리 : ' + ${recipe.INFO_ENG} + 'Kcal'"></td>
+                        <td th:text="${recipe.rcpWay}"></td>
+                        <td th:text="${recipe.rcpPat}"></td>
+                        <td width="200" th:style="'background-image:url('+@{${recipe.attFileNoMain}} +'); background-size: 200px 200px;'"></td>
+                        <td th:text="${recipe.rcpPartsDtls}"></td>
+                        <td th:text="'칼로리 : ' + ${recipe.infoEng} + 'Kcal'"></td>
                         <!-- <td th:text="${recipe.MANUAL01}"></td>
                         <td th:text="${recipe.MANUAL02}"></td>
                         <td th:text="${recipe.MANUAL03}"></td>

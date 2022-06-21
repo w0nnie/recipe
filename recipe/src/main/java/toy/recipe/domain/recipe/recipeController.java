@@ -116,7 +116,7 @@ public class recipeController {
         recipe recipe = new recipe();
         Page<recipe> recipeList = null;
 
-        recipe = recipeRepository.findByName(name);
+        recipe = recipeRepository.findByRcpName(name);
 
         if (recipe == null) { //name 서칭 후 다른 name을 서칭하기전에 모든 list들을 출력해주는 부분
             recipeList = recipeRepository.findAll(pageable);
@@ -140,7 +140,7 @@ public class recipeController {
         List<recipe> recipeList = null;
 
         if (way == "" && type != "") {  //way를 선택하지않은경우
-            recipeList = recipeRepository.findByTypeKcal(type, kcal, pageable);
+            recipeList = recipeRepository.findByRcpPatAndInfoEngLessThanEqual(type, kcal, pageable);
             if(recipeList.isEmpty()) {
                 recipeList = null;
             }
@@ -149,7 +149,7 @@ public class recipeController {
             return path + " :: #" + resultFrag;
 
         } else if (type == "" && way != "") { //type를 선택하지않은경우
-            recipeList = recipeRepository.findByWayKcal(way, kcal, pageable);
+            recipeList = recipeRepository.findByRcpWayAndInfoEngLessThanEqual(way, kcal, pageable);
             if(recipeList.isEmpty()) {
                 recipeList = null;
             }
@@ -158,7 +158,7 @@ public class recipeController {
             return path + " :: #" + resultFrag;
 
         }else if(type =="" && way == ""){ //type, way를 선택하지않은경우
-            recipeList = recipeRepository.findByKcal(kcal, pageable);
+            recipeList = recipeRepository.findByInfoEngLessThanEqual(kcal, pageable);
             if(recipeList.isEmpty()) {
                 recipeList = null;
             }
@@ -167,7 +167,7 @@ public class recipeController {
             return path + " :: #" + resultFrag;
 
         }else{
-            recipeList = recipeRepository.findByWayTypeKcal(way, type, kcal, pageable);
+            recipeList = recipeRepository.findByRcpWayAndRcpPatAndInfoEngLessThanEqual(way, type, kcal, pageable);
             if(recipeList.isEmpty()) {
                 recipeList = null;
             }
@@ -183,13 +183,14 @@ public class recipeController {
             , @RequestParam String resultFrag
             , @PageableDefault(size = 30) Pageable pageable
             , @RequestParam(name="ingredients[]") List<String> ingredients) throws IOException{
+
         List<recipe> recipeList = null;
         int count = ingredients.size();
 
         for (String i : ingredients) {
             if(count == 1) {
                 String value = ingredients.get(0);
-                recipeList = recipeRepository.findByIngredient(value,pageable);
+                recipeList = recipeRepository.findByRcpPartsDtlsContaining(value,pageable);
                 model.addAttribute(resultFrag, recipeList);
             }
 

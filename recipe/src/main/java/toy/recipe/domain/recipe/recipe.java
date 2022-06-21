@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -14,332 +15,438 @@ import javax.persistence.Id;
 @NoArgsConstructor
 public class recipe {
     @Id
-    private String RCP_SEQ;
-    private String RCP_NM;
-    private String RCP_WAY2;
-    private String RCP_PAT2;
-    private String INFO_WGT;
-    private Float INFO_ENG;
-    private String INFO_CAR;
-    private String INFO_PRO;
-    private String INFO_FAT;
-    private String INFO_NA;
-    private String HASH_TAG;
-    private String ATT_FILE_NO_MAIN;
-    private String ATT_FILE_NO_MK;
-    private String RCP_PARTS_DTLS;
-    private String MANUAL01;;
-    private String MANUAL_IMG01;
-    private String MANUAL02;
-    private String MANUAL_IMG02;
-    private String MANUAL03;
-    private String MANUAL_IMG03;
-    private String MANUAL04;
-    private String MANUAL_IMG04;
-    private String MANUAL05;
-    private String MANUAL_IMG05;
-    private String MANUAL06;
-    private String MANUAL_IMG06;
-    private String MANUAL07;
-    private String MANUAL_IMG07;
-    private String MANUAL08;
-    private String MANUAL_IMG08;
-    private String MANUAL09;
-    private String MANUAL_IMG09;
-    private String MANUAL10;
-    private String MANUAL_IMG10;
-    private String MANUAL11;
-    private String MANUAL_IMG11;
-    private String MANUAL12;
-    private String MANUAL_IMG12;
-    private String MANUAL13;
-    private String MANUAL_IMG13;
-    private String MANUAL14;
-    private String MANUAL_IMG14;
-    private String MANUAL15;
-    private String MANUAL_IMG15;
-    private String MANUAL16;
-    private String MANUAL_IMG16;
-    private String MANUAL17;
-    private String MANUAL_IMG17;
-    private String MANUAL18;
-    private String MANUAL_IMG18;
-    private String MANUAL19;
-    private String MANUAL_IMG19;
-    private String MANUAL20;
-    private String MANUAL_IMG20;
+    @Column(name="RCP_SEQ")
+    private String rcpSeq;
 
+    @Column(name="RCP_NM")
+    private String rcpName;
 
-    public String getRCP_SEQ() {
-        return RCP_SEQ;
+    @Column(name="RCP_WAY2")
+    private String rcpWay;
+
+    @Column(name="RCP_PAT2")
+    private String rcpPat;
+
+    @Column(name="INFO_WGT")
+    private String infoWgt;
+
+    @Column(name="INFO_ENG")
+    private Float infoEng;
+
+    @Column(name="INFO_CAR")
+    private String infoCar;
+
+    @Column(name="INFO_PRO")
+    private String infoPro;
+
+    @Column(name="INFO_FAT")
+    private String infoFat;
+
+    @Column(name="INFO_NA")
+    private String infoNa;
+
+    @Column(name="HASH_TAG")
+    private String hashTag;
+
+    @Column(name="ATT_FILE_NO_MAIN")
+    private String attFileNoMain;
+
+    @Column(name="ATT_FILE_NO_MK")
+    private String attFileNoMk;
+
+    @Column(name="RCP_PARTS_DTLS")
+    private String rcpPartsDtls;
+
+    @Column(name="MANUAL01")
+    private String manual01;
+
+    @Column(name="MANUAL_IMG01")
+    private String manualImg01;
+
+    @Column(name="MANUAL02")
+    private String manual02;
+
+    @Column(name="MANUAL_IMG02")
+    private String manualImg02;
+
+    @Column(name="MANUAL03")
+    private String manual03;
+
+    @Column(name="MANUAL_IMG03")
+    private String manualImg03;
+
+    @Column(name="MANUAL04")
+    private String manual04;
+
+    @Column(name="MANUAL_IMG04")
+    private String manualImg04;
+
+    @Column(name="MANUAL05")
+    private String manual05;
+
+    @Column(name="MANUAL_IMG05")
+    private String manualImg05;
+
+    @Column(name="MANUAL06")
+    private String manual06;
+
+    @Column(name="MANUAL_IMG06")
+    private String manualImg06;
+
+    @Column(name="MANUAL07")
+    private String manual07;
+
+    @Column(name="MANUAL_IMG07")
+    private String manualImg07;
+
+    @Column(name="MANUAL08")
+    private String manual08;
+
+    @Column(name="MANUAL_IMG08")
+    private String manualImg08;
+
+    @Column(name="MANUAL09")
+    private String manual09;
+
+    @Column(name="MANUAL_IMG09")
+    private String manualImg09;
+
+    @Column(name="MANUAL10")
+    private String manual10;
+
+    @Column(name="MANUAL_IMG10")
+    private String manualImg10;
+
+    @Column(name="MANUAL11")
+    private String manual11;
+
+    @Column(name="MANUAL_IMG11")
+    private String manualImg11;
+
+    @Column(name="MANUAL12")
+    private String manual12;
+
+    @Column(name="MANUAL_IMG12")
+    private String manualImg12;
+
+    @Column(name="MANUAL13")
+    private String manual13;
+
+    @Column(name="MANUAL_IMG13")
+    private String manualImg13;
+
+    @Column(name="MANUAL14")
+    private String manual14;
+
+    @Column(name="MANUAL_IMG14")
+    private String manualImg14;
+
+    @Column(name="MANUAL15")
+    private String manual15;
+
+    @Column(name="MANUAL_IMG15")
+    private String manualImg15;
+
+    @Column(name="MANUAL16")
+    private String manual16;
+
+    @Column(name="MANUAL_IMG16")
+    private String manualImg16;
+
+    @Column(name="MANUAL17")
+    private String manual17;
+
+    @Column(name="MANUAL_IMG17")
+    private String manualImg17;
+
+    @Column(name="MANUAL18")
+    private String manual18;
+
+    @Column(name="MANUAL_IMG18")
+    private String manualImg18;
+
+    @Column(name="MANUAL19")
+    private String manual19;
+
+    @Column(name="MANUAL_IMG19")
+    private String manualImg19;
+
+    @Column(name="MANUAL20")
+    private String manual20;
+
+    @Column(name="MANUAL_IMG20")
+    private String manualImg20;
+
+    public String getRcpSeq() {
+        return rcpSeq;
     }
 
-    public String getRCP_NM() {
-        return RCP_NM;
+    public String getRcpName() {
+        return rcpName;
     }
 
-    public String getRCP_WAY2() {
-        return RCP_WAY2;
+    public String getRcpWay() {
+        return rcpWay;
     }
 
-    public String getRCP_PAT2() {
-        return RCP_PAT2;
+    public String getRcpPat() {
+        return rcpPat;
     }
 
-    public String getINFO_WGT() {
-        return INFO_WGT;
+    public String getInfoWgt() {
+        return infoWgt;
     }
 
-    public Float getINFO_ENG() {
-        return INFO_ENG;
+    public Float getInfoEng() {
+        return infoEng;
     }
 
-    public String getINFO_CAR() {
-        return INFO_CAR;
+    public String getInfoCar() {
+        return infoCar;
     }
 
-    public String getINFO_PRO() {
-        return INFO_PRO;
+    public String getInfoPro() {
+        return infoPro;
     }
 
-    public String getINFO_FAT() {
-        return INFO_FAT;
+    public String getInfoFat() {
+        return infoFat;
     }
 
-    public String getINFO_NA() {
-        return INFO_NA;
+    public String getInfoNa() {
+        return infoNa;
     }
 
-    public String getHASH_TAG() {
-        return HASH_TAG;
+    public String getHashTag() {
+        return hashTag;
     }
 
-    public String getATT_FILE_NO_MAIN() {
-        return ATT_FILE_NO_MAIN;
+    public String getAttFileNoMain() {
+        return attFileNoMain;
     }
 
-    public String getATT_FILE_NO_MK() {
-        return ATT_FILE_NO_MK;
+    public String getAttFileNoMk() {
+        return attFileNoMk;
     }
 
-    public String getRCP_PARTS_DTLS() {
-        return RCP_PARTS_DTLS;
+    public String getRcpPartsDtls() {
+        return rcpPartsDtls;
     }
 
-    public String getMANUAL01() {
-        return MANUAL01;
+    public String getManual01() {
+        return manual01;
     }
 
-    public String getMANUAL_IMG01() {
-        return MANUAL_IMG01;
+    public String getManualImg01() {
+        return manualImg01;
     }
 
-    public String getMANUAL02() {
-        return MANUAL02;
+    public String getManual02() {
+        return manual02;
     }
 
-    public String getMANUAL_IMG02() {
-        return MANUAL_IMG02;
+    public String getManualImg02() {
+        return manualImg02;
     }
 
-    public String getMANUAL03() {
-        return MANUAL03;
+    public String getManual03() {
+        return manual03;
     }
 
-    public String getMANUAL_IMG03() {
-        return MANUAL_IMG03;
+    public String getManualImg03() {
+        return manualImg03;
     }
 
-    public String getMANUAL04() {
-        return MANUAL04;
+    public String getManual04() {
+        return manual04;
     }
 
-    public String getMANUAL_IMG04() {
-        return MANUAL_IMG04;
+    public String getManualImg04() {
+        return manualImg04;
     }
 
-    public String getMANUAL05() {
-        return MANUAL05;
+    public String getManual05() {
+        return manual05;
     }
 
-    public String getMANUAL_IMG05() {
-        return MANUAL_IMG05;
+    public String getManualImg05() {
+        return manualImg05;
     }
 
-    public String getMANUAL06() {
-        return MANUAL06;
+    public String getManual06() {
+        return manual06;
     }
 
-    public String getMANUAL_IMG06() {
-        return MANUAL_IMG06;
+    public String getManualImg06() {
+        return manualImg06;
     }
 
-    public String getMANUAL07() {
-        return MANUAL07;
+    public String getManual07() {
+        return manual07;
     }
 
-    public String getMANUAL_IMG07() {
-        return MANUAL_IMG07;
+    public String getManualImg07() {
+        return manualImg07;
     }
 
-    public String getMANUAL08() {
-        return MANUAL08;
+    public String getManual08() {
+        return manual08;
     }
 
-    public String getMANUAL_IMG08() {
-        return MANUAL_IMG08;
+    public String getManualImg08() {
+        return manualImg08;
     }
 
-    public String getMANUAL09() {
-        return MANUAL09;
+    public String getManual09() {
+        return manual09;
     }
 
-    public String getMANUAL_IMG09() {
-        return MANUAL_IMG09;
+    public String getManualImg09() {
+        return manualImg09;
     }
 
-    public String getMANUAL10() {
-        return MANUAL10;
+    public String getManual10() {
+        return manual10;
     }
 
-    public String getMANUAL_IMG10() {
-        return MANUAL_IMG10;
+    public String getManualImg10() {
+        return manualImg10;
     }
 
-    public String getMANUAL11() {
-        return MANUAL11;
+    public String getManual11() {
+        return manual11;
     }
 
-    public String getMANUAL_IMG11() {
-        return MANUAL_IMG11;
+    public String getManualImg11() {
+        return manualImg11;
     }
 
-    public String getMANUAL12() {
-        return MANUAL12;
+    public String getManual12() {
+        return manual12;
     }
 
-    public String getMANUAL_IMG12() {
-        return MANUAL_IMG12;
+    public String getManualImg12() {
+        return manualImg12;
     }
 
-    public String getMANUAL13() {
-        return MANUAL13;
+    public String getManual13() {
+        return manual13;
     }
 
-    public String getMANUAL_IMG13() {
-        return MANUAL_IMG13;
+    public String getManualImg13() {
+        return manualImg13;
     }
 
-    public String getMANUAL14() {
-        return MANUAL14;
+    public String getManual14() {
+        return manual14;
     }
 
-    public String getMANUAL_IMG14() {
-        return MANUAL_IMG14;
+    public String getManualImg14() {
+        return manualImg14;
     }
 
-    public String getMANUAL15() {
-        return MANUAL15;
+    public String getManual15() {
+        return manual15;
     }
 
-    public String getMANUAL_IMG15() {
-        return MANUAL_IMG15;
+    public String getManualImg15() {
+        return manualImg15;
     }
 
-    public String getMANUAL16() {
-        return MANUAL16;
+    public String getManual16() {
+        return manual16;
     }
 
-    public String getMANUAL_IMG16() {
-        return MANUAL_IMG16;
+    public String getManualImg16() {
+        return manualImg16;
     }
 
-    public String getMANUAL17() {
-        return MANUAL17;
+    public String getManual17() {
+        return manual17;
     }
 
-    public String getMANUAL_IMG17() {
-        return MANUAL_IMG17;
+    public String getManualImg17() {
+        return manualImg17;
     }
 
-    public String getMANUAL18() {
-        return MANUAL18;
+    public String getManual18() {
+        return manual18;
     }
 
-    public String getMANUAL_IMG18() {
-        return MANUAL_IMG18;
+    public String getManualImg18() {
+        return manualImg18;
     }
 
-    public String getMANUAL19() {
-        return MANUAL19;
+    public String getManual19() {
+        return manual19;
     }
 
-    public String getMANUAL_IMG19() {
-        return MANUAL_IMG19;
+    public String getManualImg19() {
+        return manualImg19;
     }
 
-    public String getMANUAL20() {
-        return MANUAL20;
+    public String getManual20() {
+        return manual20;
     }
 
-    public String getMANUAL_IMG20() {
-        return MANUAL_IMG20;
+    public String getManualImg20() {
+        return manualImg20;
     }
 
-    public recipe(String RCP_SEQ, String RCP_NM, String RCP_WAY2, String RCP_PAT2, String INFO_WGT, Float INFO_ENG, String INFO_CAR, String INFO_PRO, String INFO_FAT, String INFO_NA, String HASH_TAG, String ATT_FILE_NO_MAIN, String ATT_FILE_NO_MK, String RCP_PARTS_DTLS, String MANUAL01, String MANUAL_IMG01, String MANUAL02, String MANUAL_IMG02, String MANUAL03, String MANUAL_IMG03, String MANUAL04, String MANUAL_IMG04, String MANUAL05, String MANUAL_IMG05, String MANUAL06, String MANUAL_IMG06, String MANUAL07, String MANUAL_IMG07, String MANUAL08, String MANUAL_IMG08, String MANUAL09, String MANUAL_IMG09, String MANUAL10, String MANUAL_IMG10, String MANUAL11, String MANUAL_IMG11, String MANUAL12, String MANUAL_IMG12, String MANUAL13, String MANUAL_IMG13, String MANUAL14, String MANUAL_IMG14, String MANUAL15, String MANUAL_IMG15, String MANUAL16, String MANUAL_IMG16, String MANUAL17, String MANUAL_IMG17, String MANUAL18, String MANUAL_IMG18, String MANUAL19, String MANUAL_IMG19, String MANUAL20, String MANUAL_IMG20) {
-        this.RCP_SEQ = RCP_SEQ;
-        this.RCP_NM = RCP_NM;
-        this.RCP_WAY2 = RCP_WAY2;
-        this.RCP_PAT2 = RCP_PAT2;
-        this.INFO_WGT = INFO_WGT;
-        this.INFO_ENG = INFO_ENG;
-        this.INFO_CAR = INFO_CAR;
-        this.INFO_PRO = INFO_PRO;
-        this.INFO_FAT = INFO_FAT;
-        this.INFO_NA = INFO_NA;
-        this.HASH_TAG = HASH_TAG;
-        this.ATT_FILE_NO_MAIN = ATT_FILE_NO_MAIN;
-        this.ATT_FILE_NO_MK = ATT_FILE_NO_MK;
-        this.RCP_PARTS_DTLS = RCP_PARTS_DTLS;
-        this.MANUAL01 = MANUAL01;
-        this.MANUAL_IMG01 = MANUAL_IMG01;
-        this.MANUAL02 = MANUAL02;
-        this.MANUAL_IMG02 = MANUAL_IMG02;
-        this.MANUAL03 = MANUAL03;
-        this.MANUAL_IMG03 = MANUAL_IMG03;
-        this.MANUAL04 = MANUAL04;
-        this.MANUAL_IMG04 = MANUAL_IMG04;
-        this.MANUAL05 = MANUAL05;
-        this.MANUAL_IMG05 = MANUAL_IMG05;
-        this.MANUAL06 = MANUAL06;
-        this.MANUAL_IMG06 = MANUAL_IMG06;
-        this.MANUAL07 = MANUAL07;
-        this.MANUAL_IMG07 = MANUAL_IMG07;
-        this.MANUAL08 = MANUAL08;
-        this.MANUAL_IMG08 = MANUAL_IMG08;
-        this.MANUAL09 = MANUAL09;
-        this.MANUAL_IMG09 = MANUAL_IMG09;
-        this.MANUAL10 = MANUAL10;
-        this.MANUAL_IMG10 = MANUAL_IMG10;
-        this.MANUAL11 = MANUAL11;
-        this.MANUAL_IMG11 = MANUAL_IMG11;
-        this.MANUAL12 = MANUAL12;
-        this.MANUAL_IMG12 = MANUAL_IMG12;
-        this.MANUAL13 = MANUAL13;
-        this.MANUAL_IMG13 = MANUAL_IMG13;
-        this.MANUAL14 = MANUAL14;
-        this.MANUAL_IMG14 = MANUAL_IMG14;
-        this.MANUAL15 = MANUAL15;
-        this.MANUAL_IMG15 = MANUAL_IMG15;
-        this.MANUAL16 = MANUAL16;
-        this.MANUAL_IMG16 = MANUAL_IMG16;
-        this.MANUAL17 = MANUAL17;
-        this.MANUAL_IMG17 = MANUAL_IMG17;
-        this.MANUAL18 = MANUAL18;
-        this.MANUAL_IMG18 = MANUAL_IMG18;
-        this.MANUAL19 = MANUAL19;
-        this.MANUAL_IMG19 = MANUAL_IMG19;
-        this.MANUAL20 = MANUAL20;
-        this.MANUAL_IMG20 = MANUAL_IMG20;
+    public recipe(String rcpSeq, String rcpName, String rcpWay, String rcpPat, String infoWgt, Float infoEng, String infoCar, String infoPro, String infoFat, String infoNa, String hashTag, String attFileNoMain, String attFileNoMk, String rcpPartsDtls, String manual01, String manualImg01, String manual02, String manualImg02, String manual03, String manualImg03, String manual04, String manualImg04, String manual05, String manualImg05, String manual06, String manualImg06, String manual07, String manualImg07, String manual08, String manualImg08, String manual09, String manualImg09, String manual10, String manualImg10, String manual11, String manualImg11, String manual12, String manualImg12, String manual13, String manualImg13, String manual14, String manualImg14, String manual15, String manualImg15, String manual16, String manualImg16, String manual17, String manualImg17, String manual18, String manualImg18, String manual19, String manualImg19, String manual20, String manualImg20) {
+        this.rcpSeq = rcpSeq;
+        this.rcpName = rcpName;
+        this.rcpWay = rcpWay;
+        this.rcpPat = rcpPat;
+        this.infoWgt = infoWgt;
+        this.infoEng = infoEng;
+        this.infoCar = infoCar;
+        this.infoPro = infoPro;
+        this.infoFat = infoFat;
+        this.infoNa = infoNa;
+        this.hashTag = hashTag;
+        this.attFileNoMain = attFileNoMain;
+        this.attFileNoMk = attFileNoMk;
+        this.rcpPartsDtls = rcpPartsDtls;
+        this.manual01 = manual01;
+        this.manualImg01 = manualImg01;
+        this.manual02 = manual02;
+        this.manualImg02 = manualImg02;
+        this.manual03 = manual03;
+        this.manualImg03 = manualImg03;
+        this.manual04 = manual04;
+        this.manualImg04 = manualImg04;
+        this.manual05 = manual05;
+        this.manualImg05 = manualImg05;
+        this.manual06 = manual06;
+        this.manualImg06 = manualImg06;
+        this.manual07 = manual07;
+        this.manualImg07 = manualImg07;
+        this.manual08 = manual08;
+        this.manualImg08 = manualImg08;
+        this.manual09 = manual09;
+        this.manualImg09 = manualImg09;
+        this.manual10 = manual10;
+        this.manualImg10 = manualImg10;
+        this.manual11 = manual11;
+        this.manualImg11 = manualImg11;
+        this.manual12 = manual12;
+        this.manualImg12 = manualImg12;
+        this.manual13 = manual13;
+        this.manualImg13 = manualImg13;
+        this.manual14 = manual14;
+        this.manualImg14 = manualImg14;
+        this.manual15 = manual15;
+        this.manualImg15 = manualImg15;
+        this.manual16 = manual16;
+        this.manualImg16 = manualImg16;
+        this.manual17 = manual17;
+        this.manualImg17 = manualImg17;
+        this.manual18 = manual18;
+        this.manualImg18 = manualImg18;
+        this.manual19 = manual19;
+        this.manualImg19 = manualImg19;
+        this.manual20 = manual20;
+        this.manualImg20 = manualImg20;
     }
 }
