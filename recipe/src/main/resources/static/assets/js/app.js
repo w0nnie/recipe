@@ -45,6 +45,20 @@ function getCheckboxValue(event) { //input태그 전체가 들어온다.
   }
 }
 
+function countCheck(obj){ //checkbox 갯수제한
+  var chkBox = document.getElementsByName("ingredient");
+  var chkCnt = 0;
+  for(var i =  0; i < chkBox.length; i++){
+    if(chkBox[i].checked){
+      chkCnt++;
+    }
+  }
+  if(chkCnt > 4){
+    obj.checked = false;
+    return false;
+  }
+}
+
 // $('#check').click(function(){
 //     var checked = $('#check').is(':checked');
 

@@ -22,23 +22,22 @@
         <hr />
         <span>고기류</span>
         <br />
-        <label><input type="checkbox" name="ingredient" value="돼지고기" onclick = "getCheckboxValue(this)" />돼지고기</label>
-        <label><input type="checkbox" name="ingredient" value="소고기" onclick = "getCheckboxValue(this)" />소고기</label>
-        <label><input type="checkbox" name="ingredient" value="닭고기" onclick = "getCheckboxValue(this)"/>닭고기</label>
-        <label><input type="checkbox" name="ingredient" value="생선" onclick = "getCheckboxValue(this)" />생선</label>
+        <label><input type="checkbox" name="ingredient" value="돼지고기" onclick = "getCheckboxValue(this); countCheck(this);" />돼지고기</label>
+        <label><input type="checkbox" name="ingredient" value="소고기" onclick = "getCheckboxValue(this); countCheck(this);" />소고기</label>
+        <label><input type="checkbox" name="ingredient" value="닭고기" onclick = "getCheckboxValue(this); countCheck(this);"/>닭고기</label>
+        <label><input type="checkbox" name="ingredient" value="생선" onclick = "getCheckboxValue(this); countCheck(this);" />생선</label>
         <hr />
         <span>채소류</span>
         <br />
-        <label><input type="checkbox" name="ingredient" value="배추" onclick = "getCheckboxValue(this)" />배추</label>
-        <label><input type="checkbox" name="ingredient" value="무" onclick = "getCheckboxValue(this)" />무</label>
-        <label><input type="checkbox" name="ingredient" value="당근" onclick = "getCheckboxValue(this)" />당근</label>
-        <label><input type="checkbox" name="ingredient" value="고구마" onclick = "getCheckboxValue(this)" />고구마</label>
+        <label><input type="checkbox" name="ingredient" value="배추" onclick = "getCheckboxValue(this); countCheck(this);" />배추</label>
+        <label><input type="checkbox" name="ingredient" value="무" onclick = "getCheckboxValue(this); countCheck(this);" />무</label>
+        <label><input type="checkbox" name="ingredient" value="당근" onclick = "getCheckboxValue(this); countCheck(this);" />당근</label>
+        <label><input type="checkbox" name="ingredient" value="고구마" onclick = "getCheckboxValue(this); countCheck(this);" />고구마</label>
         <hr />
         <span>쌀</span>
         <br />
-        <label><input type="checkbox" value="쌀" />쌀</label>
-        <label><input type="checkbox" value="잡곡" />잡곡</label>
-        <label><input type="checkbox" value="쌀" />쌀</label>
+        <label><input type="checkbox" name="ingredient" value="쌀" onclick = "getCheckboxValue(this); countCheck(this);" />쌀</label>
+        <label><input type="checkbox" name="ingredient" value="잡곡" onclick = "getCheckboxValue(this); countCheck(this);" />잡곡</label>
         <hr />
         <div id="getIngredientAxDiv">
           <th:block th:if="${getIngredientAxDiv != null}">
@@ -81,6 +80,9 @@
                         <td th:text="${recipe.MANUAL16}"></td> -->
                     </tr>
                 </table>
+            </th:block>
+            <th:block th:if="${getIngredientAxDiv == null}">
+                <span>조회된 데이터가 없습니다.</span>
             </th:block>
         </div>
     </div>
