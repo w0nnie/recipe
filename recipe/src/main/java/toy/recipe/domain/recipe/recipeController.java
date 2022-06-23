@@ -199,7 +199,7 @@ public class recipeController {
 //                System.out.println(strQry);
                 String value1 = ingredients.get(0);
                 String value2 = ingredients.get(1);
-                recipeList = recipeRepository.findByIngredients(value1,value2,pageable);
+                recipeList = recipeRepository.findByRcpPartsDtlsContainingAndRcpPartsDtlsContaining(value1, value2, pageable);
                 model.addAttribute(resultFrag, recipeList);
             }
 
@@ -207,7 +207,16 @@ public class recipeController {
                 String value1 = ingredients.get(0);
                 String value2 = ingredients.get(1);
                 String value3 = ingredients.get(2);
-                recipeList = recipeRepository.findByIngredient3(value1,value2,value3,pageable);
+                recipeList = recipeRepository.findByRcpPartsDtlsContainingAndRcpPartsDtlsContainingAndRcpPartsDtlsContaining(value1, value2, value3, pageable);
+                model.addAttribute(resultFrag, recipeList);
+            }
+
+            if(count == 4) {
+                String value1 = ingredients.get(0);
+                String value2 = ingredients.get(1);
+                String value3 = ingredients.get(2);
+                String value4 = ingredients.get(3);
+                recipeList = recipeRepository.findByRcpPartsDtlsContainingAndRcpPartsDtlsContainingAndRcpPartsDtlsContainingAndRcpPartsDtlsContaining(value1, value2, value3, value4, pageable);
                 model.addAttribute(resultFrag, recipeList);
             }
         }
