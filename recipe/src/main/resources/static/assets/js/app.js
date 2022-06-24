@@ -32,16 +32,17 @@ function getCheckboxValue(event) { //input태그 전체가 들어온다.
   if(event.checked == true){ // 체크시
     for(var i = 0; i<ingredient_length; i++){
       if(document.getElementsByName("ingredient")[i].checked == true){
-        ingredients.push(ingredient[i].value)  
+        ingredients.push(ingredient[i].value);
       }
     }
     getIngredient(ingredients);
   }else{ //체크해제시 
     for(var i = 0; i<ingredient_length; i++){
       if(document.getElementsByName("ingredient")[i].checked == true){
-        console.log(ingredient[i].value);
+        ingredients.push(ingredient[i].value);
       }
     }
+    getIngredient(ingredients);
   }
 }
 
