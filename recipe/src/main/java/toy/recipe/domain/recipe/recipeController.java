@@ -182,45 +182,63 @@ public class recipeController {
             , @RequestParam String path
             , @RequestParam String resultFrag
             , @PageableDefault(size = 30) Pageable pageable
-            , @RequestParam(name="ingredients[]") List<String> ingredients) throws IOException{
+            , @RequestParam(required = false, name="ingredients[]") List<String> ingredients) {
 
-        List<recipe> recipeList = null;
-        int count = ingredients.size();
+        try {
+                List<recipe> recipeList = null;
+                int count = ingredients.size();
 
-        for (String i : ingredients) {
-            if(count == 1) {
-                String value = ingredients.get(0);
-                recipeList = recipeRepository.findByRcpPartsDtlsContaining(value,pageable);
-                model.addAttribute(resultFrag, recipeList);
-            }
+                for (String i : ingredients) {
+                    if(count == 1) {
+                        String value = ingredients.get(0);
+                        recipeList = recipeRepository.findByRcpPartsDtlsContaining(value,pageable);
+                        if(recipeList.isEmpty()) {
+                            recipeList = null;
+                        }
+                        model.addAttribute(resultFrag, recipeList);
+                    }
 
-            if(count == 2) {
-//                String strQry = "RCP_PARTS_DTLS LIKE %" + ingredients.get(0) + "% AND RCP_PARTS_DTLS LIKE %" + ingredients.get(1) + "%";
-//                System.out.println(strQry);
-                String value1 = ingredients.get(0);
-                String value2 = ingredients.get(1);
-                recipeList = recipeRepository.findByRcpPartsDtlsContainingAndRcpPartsDtlsContaining(value1, value2, pageable);
-                model.addAttribute(resultFrag, recipeList);
-            }
+                    if(count == 2) {
+    //                String strQry = "RCP_PARTS_DTLS LIKE %" + ingredients.get(0) + "% AND RCP_PARTS_DTLS LIKE %" + ingredients.get(1) + "%";
+    //                System.out.println(strQry);
+                        String value1 = ingredients.get(0);
+                        String value2 = ingredients.get(1);
+                        recipeList = recipeRepository.findByRcpPartsDtlsContainingAndRcpPartsDtlsContaining(value1, value2, pageable);
+                        if(recipeList.isEmpty()) {
+                            recipeList = null;
+                        }
+                        model.addAttribute(resultFrag, recipeList);
+                    }
 
-            if(count == 3) {
-                String value1 = ingredients.get(0);
-                String value2 = ingredients.get(1);
-                String value3 = ingredients.get(2);
-                recipeList = recipeRepository.findByRcpPartsDtlsContainingAndRcpPartsDtlsContainingAndRcpPartsDtlsContaining(value1, value2, value3, pageable);
-                model.addAttribute(resultFrag, recipeList);
-            }
+                    if(count == 3) {
+                        String value1 = ingredients.get(0);
+                        String value2 = ingredients.get(1);
+                        String value3 = ingredients.get(2);
+                        recipeList = recipeRepository.findByRcpPartsDtlsContainingAndRcpPartsDtlsContainingAndRcpPartsDtlsContaining(value1, value2, value3, pageable);
+                        if(recipeList.isEmpty()) {
+                            recipeList = null;
+                        }
+                        model.addAttribute(resultFrag, recipeList);
+                    }
 
-            if(count == 4) {
-                String value1 = ingredients.get(0);
-                String value2 = ingredients.get(1);
-                String value3 = ingredients.get(2);
-                String value4 = ingredients.get(3);
-                recipeList = recipeRepository.findByRcpPartsDtlsContainingAndRcpPartsDtlsContainingAndRcpPartsDtlsContainingAndRcpPartsDtlsContaining(value1, value2, value3, value4, pageable);
-                model.addAttribute(resultFrag, recipeList);
-            }
+                    if(count == 4) {
+                        String value1 = ingredients.get(0);
+                        String value2 = ingredients.get(1);
+                        String value3 = ingredients.get(2);
+                        String value4 = ingredients.get(3);
+                        recipeList = recipeRepository.findByRcpPartsDtlsContainingAndRcpPartsDtlsContainingAndRcpPartsDtlsContainingAndRcpPartsDtlsContaining(value1, value2, value3, value4, pageable);
+                        if(recipeList.isEmpty()) {
+                            recipeList = null;
+                        }
+                        model.addAttribute(resultFrag, recipeList);
+                    }
+                }
+
+                return path + " :: #" + resultFrag;
+
+        }catch (NullPointerException e){
+
+            return path + " :: #" + resultFrag;
         }
-
-        return path + " :: #" + resultFrag;
     }
 }
