@@ -85,9 +85,7 @@ public class recipeController {
         Page<recipe> recipe = null;
 //        List<recipe> recipe1 = null;
         recipe = recipeRepository.findAll(pageable);
-//        recipe1 =  recipeRepository.findAll();
         model.addAttribute("recipe", recipe);
-//        model.addAttribute("recipe1",recipe1);
 
         return "pages/main";
     }
@@ -98,9 +96,7 @@ public class recipeController {
         Page<recipe> recipe = null;
 //        List<recipe> recipe1 = null;
         recipe = recipeRepository.findAll(pageable);
-//        recipe1 =  recipeRepository.findAll();
-//        model.addAttribute("recipe", recipe);
-//        model.addAttribute("recipe1",recipe1);
+        model.addAttribute("recipe", recipe);
 
         return "pages/ingredient";
     }
@@ -199,8 +195,6 @@ public class recipeController {
                     }
 
                     if(count == 2) {
-    //                String strQry = "RCP_PARTS_DTLS LIKE %" + ingredients.get(0) + "% AND RCP_PARTS_DTLS LIKE %" + ingredients.get(1) + "%";
-    //                System.out.println(strQry);
                         String value1 = ingredients.get(0);
                         String value2 = ingredients.get(1);
                         recipeList = recipeRepository.findByRcpPartsDtlsContainingAndRcpPartsDtlsContaining(value1, value2, pageable);
