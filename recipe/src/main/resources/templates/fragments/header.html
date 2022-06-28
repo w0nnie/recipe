@@ -2,13 +2,20 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <div th:fragment ="fragment-header">
-<ul>
-    <li>
-        <a  href="#" th:href="@{/recipe/main}">레시피</a>
-    </li>   
-    <li>
-        <a  href="#" th:href="@{/recipe/ingredient}">재료별검색</a>
-    </li>
-</ul>
+    <nav class="navbar navbar-expand-sm navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" th:href="@{/recipe/main}">Recipe</a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" th:href="@{/recipe/main}">레시피</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" th:href="@{/recipe/ingredient}">재료별검색</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 </div>
 </html>
