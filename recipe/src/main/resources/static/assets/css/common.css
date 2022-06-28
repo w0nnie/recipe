@@ -1,0 +1,117 @@
+.navbar {
+    padding: 2px;
+    font-size: small;
+    background-color: #00A5FF;
+}
+
+.dropdown-menu {
+    font-size: small;
+}
+
+.dropdown-menu li {
+    position: relative;
+}
+.dropdown-menu .dropdown-submenu {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: -7px;
+}
+.dropdown-menu .dropdown-submenu-left {
+    right: 100%;
+    left: auto;
+}
+.dropdown-menu > li:hover > .dropdown-submenu {
+    display: block;
+} 
+
+/* 본문 */
+.page {
+    padding: 7px;
+    margin-top: 45px;
+    margin-bottom: 40px;
+}
+
+/* footer */
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #00BFFF;
+    color: white;
+    height: 35px;
+    padding: 5px;
+    font-size: small;
+}
+
+.form {
+    font-size:small;
+}
+.form-control {
+    font-size:small;
+}
+
+.form-select {
+    font-size:small;
+}
+
+.form-group {
+    font-size:small;
+}
+
+.lxHidden {
+    visibility: collapse;
+}
+
+.lxPanel-sm {
+    width: 120px;
+    display:inline-block;
+    text-align: center;
+    font-weight: bold;
+    font-size: small;
+}
+.lxPanel-md {
+    width: 240px;
+    display:inline-block;
+    text-align: center;
+    font-weight: bold;
+    font-size: small;
+}
+.lxPanel-lg {
+    width: 340px;
+    display:inline-block;
+    text-align: center;
+    font-weight: bold;
+    font-size: small;
+}
+
+.lxInput{
+    text-align: left;
+    font-weight: bold;
+}
+.lxInput-sm {
+    width: 120px;
+    text-align: left;
+    font-weight: bold;
+}
+.readonly {
+    background-color : #e9ecef
+}
+.tHead {
+    text-align: center;
+    vertical-align:middle;
+    background: linear-gradient(to top, #DEE2E6, white);
+}
+.tDataLM {
+    text-align: left;
+    vertical-align:middle;
+}
+.tDataCM {
+    text-align: center;
+    vertical-align:middle;
+}
+.tDataRM {
+    text-align: right;
+    vertical-align:middle;
+}
