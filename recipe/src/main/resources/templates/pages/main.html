@@ -65,9 +65,9 @@
                         </tr>
                         <tr height="200" th:each="recipe : ${getProductAxDiv}">
                             <td>
-                                <a href="#" th:text="${recipe.rcpName}"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#recipeModal">
+                                <a href="#" type="button" th:text="${recipe.rcpName}"
+                                    data-bs-toggle="modal" data-bs-target="#recipeModal"
+                                    th:data-bs-name="${recipe.rcpName}">
                                 </a>
                             </td>
                             <td th:text="${recipe.rcpWay}"></td>
@@ -110,9 +110,9 @@
                         </tr>
                         <tr height="200" th:each="recipe : ${recipe}">
                             <td>
-                                <a href="#" th:text="${recipe.rcpName}"
-                                    data-bs-toggle="modal" >
-                                    data-bs-target="#vanAddModal"
+                                <a href="#" type="button" th:text="${recipe.rcpName}"
+                                    data-bs-toggle="modal" data-bs-target="#recipeModal"
+                                    th:data-bs-name="${recipe.rcpName}">
                                 </a>
                             </td>
                             <td th:text="${recipe.rcpWay}"></td>

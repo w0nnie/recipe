@@ -9,7 +9,7 @@ function getProductAx(path, resultFrag, name){
     });
 }
 
-function getTypeWayKcalAx(path, resultFrag,wvalue,tvalue,kvalueInt){
+function getTypeWayKcalAx(path, resultFrag, wvalue, tvalue, kvalueInt){
     $.ajax({
         url:"/recipe/search2",
         data: {"path" : path, "resultFrag" : resultFrag, "type" : tvalue, "way" : wvalue, "kcal" : kvalueInt},
@@ -24,6 +24,17 @@ function getIngredientAx(path, resultFrag, ingredients){
     $.ajax({
         url:"/recipe/ingredient",
         data: {"path" : path, "resultFrag" : resultFrag, "ingredients" : ingredients},
+        type:"POST",
+        cache: false
+    }).done(function (fragment){
+        $("#" + resultFrag).replaceWith(fragment);
+    });
+}
+
+function getRecipeModalAx(path, resultFrag, rcpName){
+    $.ajax({
+        url:"/recipe/modal",
+        data: {"path" : path, "resultFrag" : resultFrag, "rcpName" : rcpName},
         type:"POST",
         cache: false
     }).done(function (fragment){

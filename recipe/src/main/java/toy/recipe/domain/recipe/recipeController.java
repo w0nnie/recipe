@@ -235,4 +235,20 @@ public class recipeController {
             return path + " :: #" + resultFrag;
         }
     }
+
+    @PostMapping("/modal")
+    public String listsAx(Model model
+            , @RequestParam String path
+            , @RequestParam String resultFrag
+            , @RequestParam String rcpName) {
+
+        recipe recipe = null;
+
+        recipe = recipeRepository.findByRcpName(rcpName);
+        System.out.println("여기"+recipe);
+
+        model.addAttribute(resultFrag, recipe);
+
+        return path + " :: #" + resultFrag;
+    }
 }

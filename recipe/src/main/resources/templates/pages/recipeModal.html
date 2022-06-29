@@ -1,7 +1,38 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<script type="text/javascript">
+    $(function () {
+        var tempModal = document.getElementById("recipeModal");
+
+        tempModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget;
+            var path = "pages/recipeModal";
+            var resultFrag = 'getRecipeModalAxDiv';
+            var rcpName = button.getAttribute('data-bs-name');
+            console.log("여기" + rcpName);
+            getRecipeModalAx(path,resultFrag,rcpName);
+        })
+    });
+    // function recipeModal_closeModal() {
+    // }
+</script>
 <div th:fragment ="fragment-recipeModal()">
-    <div class="modal fade" tabindex="-1">
+    <div class="modal fade" id="recipeModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+        <div class="modal-dialog modal-md">
+            <div class="modal-header">
+                <span class="modal-title">레시피</span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="getRecipeModalAxDiv">
+                    <th:block th:if="${getRecipeModalAxDiv != null}">
+                        <div th:each="recipe : ${recipe}">
+                            <input  type="text" th:text="${recipe.rcpName}">
+                        </div>
+                    </th:block>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </html>

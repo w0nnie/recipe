@@ -52,7 +52,7 @@
                     <tr height="200" th:each="recipe : ${getIngredientAxDiv}">
                         <td>
                             <a href="#" th:text="${recipe.rcpName}"
-                                data-bs-toggle="modal" >
+                                >
                                 <!-- data-bs-target="#vanAddModal" -->
                             </a>
                         </td>
@@ -97,7 +97,6 @@
                         <td>
                             <a href="#" th:text="${recipe.rcpName}"
                                 data-bs-toggle="modal" >
-                                data-bs-target="#vanAddModal"
                             </a>
                         </td>
                         <td th:text="${recipe.rcpWay}"></td>
