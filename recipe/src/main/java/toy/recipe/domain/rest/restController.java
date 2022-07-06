@@ -26,60 +26,54 @@ public class restController {
 
 
     @GetMapping("/member")
-    public ResponseEntity<CommonDto<List<member>>> findAll() {
+    public ResponseEntity<CommonResponse<List<member>>> findAll() {
 
-        return new ResponseEntity<>(new CommonDto<>(HttpStatus.OK.value(), memberRepository.findAll()),HttpStatus.OK);
+        return new ResponseEntity<>(new CommonResponse<>(HttpStatus.OK.value(), memberRepository.findAll()),HttpStatus.OK);
     }
 
     @GetMapping("/member/{id}") //http://localhost:8080/api/member/admin
-    public ResponseEntity<CommonDto<member>> findById(@PathVariable String id){
+    public ResponseEntity<? extends CommonDto> findById(@PathVariable String id){
         member member = memberRepository.findById(id);
 
         if(member == null){
-            return ResponseEntity.notFound().build(); // TODO: 2022/07/04  
+            return ResponseEntity.status(HttpStatus.OK).body(new ErrorResponseDto(HttpStatus.OK.value(), "일치하는 회원정보가 없습니다."));
         } else {
-            return new ResponseEntity<>(new CommonDto<>(HttpStatus.OK.value(), member),HttpStatus.OK);
+            return new ResponseEntity<>(new CommonResponse<>(HttpStatus.OK.value(), member),HttpStatus.OK);
         }
 
     }
 
     @GetMapping("/member/{id}/{password}") //http://localhost:8080/api/member/admin/1
-    public ResponseEntity<CommonDto<member>> findById(@PathVariable String id, @PathVariable int password){
+    public ResponseEntity<? extends CommonDto> findById(@PathVariable String id, @PathVariable int password){
 
         member member = memberRepository.findByIdAndPassword(id,password);
         if(member == null){
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(HttpStatus.OK).body(new ErrorResponseDto(HttpStatus.OK.value(), "로그인 실패"));
         } else {
-            return new ResponseEntity<>(new CommonDto<>(HttpStatus.OK.value(), member),HttpStatus.OK);
+            return new ResponseEntity<>(new CommonResponse<>(HttpStatus.OK.value(), member),HttpStatus.OK);
         }
     }
 
     @PostMapping("/member") //http://localhost:8080/api/member
     // application/json
-    public ResponseEntity<CommonDto<String>> save(@RequestBody member member){
+    public ResponseEntity<? extends CommonDto> save(@RequestBody member member){
         memberRepository.save(member);
 
-        return new ResponseEntity<>(new CommonDto<>(HttpStatus.CREATED.value(), "ok"),HttpStatus.OK);
+        return new ResponseEntity<>(new CommonResponse<>(HttpStatus.CREATED.value(), "Success"),HttpStatus.OK);
     }
 
-    @PutMapping("/member/{id}") // TODO: 2022/07/04  
-    public ResponseEntity<CommonDto<String>> update(@PathVariable String id, @PathVariable int password){
-
-        System.out.println("여기?");
+    @PatchMapping("/member/{id}/{password}") // TODO: 2022/07/04
+    public ResponseEntity<? extends CommonDto> update(@PathVariable String id, @PathVariable int password){
 
         member member = memberRepository.findById(id);
 
-        System.out.println("여기?" + member);
-
         if(member == null){
-            System.out.println("여기는 타냐?");
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(HttpStatus.OK).body(new ErrorResponseDto(HttpStatus.OK.value(), "회원정보 업데이트 실패"));
         } else {
             member.setId(id);
             member.setPassword(password);
-            System.out.println("여기"+member.getId() + "비번" + member.getPassword());
             memberRepository.save(member);
-            return new ResponseEntity<>(new CommonDto<>(HttpStatus.CREATED.value(), "ok"),HttpStatus.OK);
+            return new ResponseEntity<>(new CommonResponse<>(HttpStatus.CREATED.value(), "Success"),HttpStatus.CREATED);
         }
     }
 }
