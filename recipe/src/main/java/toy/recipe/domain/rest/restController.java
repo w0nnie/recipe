@@ -9,7 +9,6 @@ import toy.recipe.domain.member.member;
 import toy.recipe.domain.member.memberRepository;
 import toy.recipe.domain.recipe.recipeRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -36,7 +35,7 @@ public class restController {
         member member = memberRepository.findById(id);
 
         if(member == null){
-            return ResponseEntity.status(HttpStatus.OK).body(new ErrorResponseDto(HttpStatus.OK.value(), "일치하는 회원정보가 없습니다."));
+            return ResponseEntity.status(HttpStatus.OK).body(new ErrorResponse(HttpStatus.OK.value(), "일치하는 회원정보가 없습니다."));
         } else {
             return new ResponseEntity<>(new CommonResponse<>(HttpStatus.OK.value(), member),HttpStatus.OK);
         }
@@ -48,7 +47,7 @@ public class restController {
 
         member member = memberRepository.findByIdAndPassword(id,password);
         if(member == null){
-            return ResponseEntity.status(HttpStatus.OK).body(new ErrorResponseDto(HttpStatus.OK.value(), "로그인 실패"));
+            return ResponseEntity.status(HttpStatus.OK).body(new ErrorResponse(HttpStatus.OK.value(), "로그인 실패"));
         } else {
             return new ResponseEntity<>(new CommonResponse<>(HttpStatus.OK.value(), member),HttpStatus.OK);
         }
@@ -68,7 +67,7 @@ public class restController {
         member member = memberRepository.findById(id);
 
         if(member == null){
-            return ResponseEntity.status(HttpStatus.OK).body(new ErrorResponseDto(HttpStatus.OK.value(), "회원정보 업데이트 실패"));
+            return ResponseEntity.status(HttpStatus.OK).body(new ErrorResponse(HttpStatus.OK.value(), "회원정보 업데이트 실패"));
         } else {
             member.setId(id);
             member.setPassword(password);

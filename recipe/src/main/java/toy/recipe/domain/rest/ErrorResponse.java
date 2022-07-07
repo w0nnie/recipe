@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ErrorResponseDto extends CommonDto {
+public class ErrorResponse extends CommonDto {
 
     private int statusCode;
     private  String errorMessage;
