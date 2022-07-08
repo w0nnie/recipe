@@ -1,38 +1,107 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<script type="text/javascript">
-    $(function () {
-        var tempModal = document.getElementById("recipeModal");
-
-        tempModal.addEventListener('show.bs.modal', function (event) {
-            var button = event.relatedTarget;
-            var path = "pages/recipeModal";
-            var resultFrag = 'getRecipeModalAxDiv';
-            var rcpName = button.getAttribute('data-bs-name');
-            console.log("여기" + rcpName);
-            getRecipeModalAx(path,resultFrag,rcpName);
-        })
-    });
-    // function recipeModal_closeModal() {
-    // }
-</script>
 <div th:fragment ="fragment-recipeModal()">
-    <div class="modal fade" id="recipeModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
-        <div class="modal-dialog modal-md">
+    <script type="text/javascript">
+        $(function() {
+            var tempModal = document.getElementById("recipeModal");
+    
+            tempModal.addEventListener('show.bs.modal', function (event) {
+                var button = event.relatedTarget;
+                var path = "pages/recipeModal";
+                var resultFrag = 'getRecipeModalAxDiv';
+                var rcpName = button.getAttribute('data-bs-name');
+                getRecipeModalAx(path,resultFrag,rcpName);
+            })
+        });
+    </script>
+    <div class="modal fade" id="recipeModal" data-bs-backdrop="static" data-bs-keyboard = "false" tabindex="-1">
+        <div class="modal-dialog modal-dialog-scrollable">
+          <div class="modal-content">
             <div class="modal-header">
-                <span class="modal-title">레시피</span>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <h5 class="modal-title">Recipe</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div id="getRecipeModalAxDiv">
                     <th:block th:if="${getRecipeModalAxDiv != null}">
-                        <div th:each="recipe : ${recipe}">
-                            <input  type="text" th:text="${recipe.rcpName}">
+                        <div th:each="recipe : ${getRecipeModalAxDiv}">
+                            <div class="col mb-1 g-0"><div class="card w-100" style="border: 0;"><div class="input-group">
+                                <span class="input-group-text lxPanel-sm">Recipe명</span>
+                                <div class="form-group" style="width: 345px">
+                                    <input class="form-control lxInput-lg" type="text"  th:value="${recipe.rcpName}" readonly>
+                                    </div>
+                            </div></div></div>
+                            <table>
+                                <tr>
+                                    <td th:text="${recipe.manual01}"></td>
+                                </tr>
+                                <tr>
+                                    <td th:text="${recipe.manual02}"></td>
+                                </tr>
+                                <tr>
+                                    <td th:text="${recipe.manual03}"></td>
+                                </tr>
+                                <tr>
+                                    <td th:text="${recipe.manual04}"></td>
+                                </tr>
+                                <tr>
+                                    <td th:text="${recipe.manual05}"></td>
+                                </tr>
+                                <tr>
+                                    <td th:text="${recipe.manual06}"></td>
+                                </tr>
+                                <tr>
+                                    <td th:text="${recipe.manual07}"></td>
+                                </tr>
+                                <tr>
+                                    <td th:text="${recipe.manual08}"></td>
+                                </tr>
+                                <tr>
+                                    <td th:text="${recipe.manual09}"></td>
+                                </tr>
+                                <tr>
+                                    <td th:text="${recipe.manual10}"></td>
+                                </tr>
+                                <tr>
+                                    <td th:text="${recipe.manual11}"></td>
+                                </tr>
+                                <tr>
+                                    <td th:text="${recipe.manual12}"></td>
+                                </tr>
+                                <tr>
+                                    <td th:text="${recipe.manual13}"></td>
+                                </tr>
+                                <tr>
+                                    <td th:text="${recipe.manual14}"></td>
+                                </tr>
+                                <tr>
+                                    <td th:text="${recipe.manual15}"></td>
+                                </tr>
+                                <tr>
+                                    <td th:text="${recipe.manual16}"></td>
+                                </tr>
+                                <tr>
+                                    <td th:text="${recipe.manual17}"></td>
+                                </tr>
+                                <tr>
+                                    <td th:text="${recipe.manual18}"></td>
+                                </tr>
+                                <tr>
+                                    <td th:text="${recipe.manual19}"></td>
+                                </tr>
+                                <tr>
+                                    <td th:text="${recipe.manual20}"></td>
+                                </tr>
+                            </table>
                         </div>
                     </th:block>
                 </div>
             </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
         </div>
-    </div>
+      </div>
 </div>
 </html>
