@@ -15,6 +15,7 @@
   </head>
   <body>
     <div layout:fragment="content" class="container bg-white page">
+      <div th:replace="pages/recipeModal :: fragment-recipeModal()"></div>
       <br />
       <form>
         <p>재료 리스트</p>
@@ -51,32 +52,16 @@
                     </tr>
                     <tr height="200" th:each="recipe : ${getIngredientAxDiv}">
                         <td>
-                            <a href="#" th:text="${recipe.rcpName}"
-                                >
-                                <!-- data-bs-target="#vanAddModal" -->
-                            </a>
+                          <a href="#" type="button" th:text="${recipe.rcpName}"
+                              data-bs-toggle="modal" data-bs-target="#recipeModal"
+                              th:data-bs-name="${recipe.rcpName}">
+                          </a>
                         </td>
                         <td th:text="${recipe.rcpWay}"></td>
                         <td th:text="${recipe.rcpPat}"></td>
                         <td width="200" th:style="'background-image:url('+@{${recipe.attFileNoMain}} +'); background-size: 200px 200px;'"></td>
                         <td th:text="${recipe.rcpPartsDtls}"></td>
                         <td th:text="'칼로리 : ' + ${recipe.infoEng} + 'Kcal'"></td>
-                        <!-- <td th:text="${recipe.MANUAL01}"></td>
-                        <td th:text="${recipe.MANUAL02}"></td>
-                        <td th:text="${recipe.MANUAL03}"></td>
-                        <td th:text="${recipe.MANUAL04}"></td>
-                        <td th:text="${recipe.MANUAL05}"></td>
-                        <td th:text="${recipe.MANUAL06}"></td>
-                        <td th:text="${recipe.MANUAL07}"></td>
-                        <td th:text="${recipe.MANUAL08}"></td>
-                        <td th:text="${recipe.MANUAL09}"></td>
-                        <td th:text="${recipe.MANUAL10}"></td>
-                        <td th:text="${recipe.MANUAL11}"></td>
-                        <td th:text="${recipe.MANUAL12}"></td>
-                        <td th:text="${recipe.MANUAL13}"></td>
-                        <td th:text="${recipe.MANUAL14}"></td>
-                        <td th:text="${recipe.MANUAL15}"></td>
-                        <td th:text="${recipe.MANUAL16}"></td> -->
                     </tr>
                 </table>
             </th:block>
@@ -95,9 +80,10 @@
                     </tr>
                     <tr height="200" th:each="recipe : ${recipe}">
                         <td>
-                            <a href="#" th:text="${recipe.rcpName}"
-                                data-bs-toggle="modal" >
-                            </a>
+                          <a href="#" type="button" th:text="${recipe.rcpName}"
+                              data-bs-toggle="modal" data-bs-target="#recipeModal"
+                              th:data-bs-name="${recipe.rcpName}">
+                          </a>
                         </td>
                         <td th:text="${recipe.rcpWay}"></td>
                         <td th:text="${recipe.rcpPat}"></td>
