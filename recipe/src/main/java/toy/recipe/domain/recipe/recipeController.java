@@ -104,15 +104,15 @@ public class recipeController {
     public String listAx(Model model
             , @RequestParam String path
             , @RequestParam String resultFrag
-            , @RequestParam String name, @PageableDefault(size = 300) Pageable pageable) {
+            , @RequestParam String name) {
 
         recipe recipe = new recipe();
-        Page<recipe> recipeList = null;
+        List<recipe> recipeList = null;
 
         recipe = recipeRepository.findByRcpName(name);
 
         if (recipe == null) { //name 서칭 후 다른 name을 서칭하기전에 모든 list들을 출력해주는 부분
-            recipeList = recipeRepository.findAll(pageable);
+            recipeList = recipeRepository.findAll();
 
             model.addAttribute(resultFrag, recipeList);
             return path + " :: #" + resultFrag;
@@ -127,13 +127,12 @@ public class recipeController {
             , @RequestParam String resultFrag
             , @RequestParam String way
             , @RequestParam String type
-            , @RequestParam Float kcal
-            , @PageableDefault(size = 300) Pageable pageable) {
+            , @RequestParam Float kcal) {
 
         List<recipe> recipeList = null;
 
         if (way == "" && type != "") {  //way를 선택하지않은경우
-            recipeList = recipeRepository.findByRcpPatAndInfoEngLessThanEqual(type, kcal, pageable);
+            recipeList = recipeRepository.findByRcpPatAndInfoEngLessThanEqual(type, kcal);
             if(recipeList.isEmpty()) {
                 recipeList = null;
             }
@@ -142,7 +141,7 @@ public class recipeController {
             return path + " :: #" + resultFrag;
 
         } else if (type == "" && way != "") { //type를 선택하지않은경우
-            recipeList = recipeRepository.findByRcpWayAndInfoEngLessThanEqual(way, kcal, pageable);
+            recipeList = recipeRepository.findByRcpWayAndInfoEngLessThanEqual(way, kcal);
             if(recipeList.isEmpty()) {
                 recipeList = null;
             }
@@ -151,7 +150,7 @@ public class recipeController {
             return path + " :: #" + resultFrag;
 
         }else if(type =="" && way == ""){ //type, way를 선택하지않은경우
-            recipeList = recipeRepository.findByInfoEngLessThanEqual(kcal, pageable);
+            recipeList = recipeRepository.findByInfoEngLessThanEqual(kcal);
             if(recipeList.isEmpty()) {
                 recipeList = null;
             }
@@ -160,7 +159,7 @@ public class recipeController {
             return path + " :: #" + resultFrag;
 
         }else{
-            recipeList = recipeRepository.findByRcpWayAndRcpPatAndInfoEngLessThanEqual(way, type, kcal, pageable);
+            recipeList = recipeRepository.findByRcpWayAndRcpPatAndInfoEngLessThanEqual(way, type, kcal);
             if(recipeList.isEmpty()) {
                 recipeList = null;
             }
@@ -174,7 +173,6 @@ public class recipeController {
     public String ingredientAx(Model model
             , @RequestParam String path
             , @RequestParam String resultFrag
-            , @PageableDefault(size = 30) Pageable pageable
             , @RequestParam(required = false, name="ingredients[]") List<String> ingredients) {
 
         try {
@@ -184,7 +182,7 @@ public class recipeController {
                 for (String i : ingredients) {
                     if(count == 1) {
                         String value = ingredients.get(0);
-                        recipeList = recipeRepository.findByRcpPartsDtlsContaining(value,pageable);
+                        recipeList = recipeRepository.findByRcpPartsDtlsContaining(value);
                         if(recipeList.isEmpty()) {
                             recipeList = null;
                         }
@@ -194,7 +192,7 @@ public class recipeController {
                     if(count == 2) {
                         String value1 = ingredients.get(0);
                         String value2 = ingredients.get(1);
-                        recipeList = recipeRepository.findByRcpPartsDtlsContainingAndRcpPartsDtlsContaining(value1, value2, pageable);
+                        recipeList = recipeRepository.findByRcpPartsDtlsContainingAndRcpPartsDtlsContaining(value1, value2);
                         if(recipeList.isEmpty()) {
                             recipeList = null;
                         }
@@ -205,7 +203,7 @@ public class recipeController {
                         String value1 = ingredients.get(0);
                         String value2 = ingredients.get(1);
                         String value3 = ingredients.get(2);
-                        recipeList = recipeRepository.findByRcpPartsDtlsContainingAndRcpPartsDtlsContainingAndRcpPartsDtlsContaining(value1, value2, value3, pageable);
+                        recipeList = recipeRepository.findByRcpPartsDtlsContainingAndRcpPartsDtlsContainingAndRcpPartsDtlsContaining(value1, value2, value3);
                         if(recipeList.isEmpty()) {
                             recipeList = null;
                         }
@@ -217,7 +215,7 @@ public class recipeController {
                         String value2 = ingredients.get(1);
                         String value3 = ingredients.get(2);
                         String value4 = ingredients.get(3);
-                        recipeList = recipeRepository.findByRcpPartsDtlsContainingAndRcpPartsDtlsContainingAndRcpPartsDtlsContainingAndRcpPartsDtlsContaining(value1, value2, value3, value4, pageable);
+                        recipeList = recipeRepository.findByRcpPartsDtlsContainingAndRcpPartsDtlsContainingAndRcpPartsDtlsContainingAndRcpPartsDtlsContaining(value1, value2, value3, value4);
                         if(recipeList.isEmpty()) {
                             recipeList = null;
                         }

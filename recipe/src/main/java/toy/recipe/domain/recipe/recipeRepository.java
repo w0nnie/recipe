@@ -25,7 +25,7 @@ public interface recipeRepository extends JpaRepository<recipe, Long>, JpaSpecif
 //                    "ORDER BY RCP_SEQ")
 //    recipe findByRcpName(String name);
 
-    List<recipe> findByRcpPatAndInfoEngLessThanEqual(String type, Float kcal, Pageable pageable);
+    List<recipe> findByRcpPatAndInfoEngLessThanEqual(String type, Float kcal);
 
 //    @Query(nativeQuery = true,
 //            value = "SELECT *\n" +
@@ -35,7 +35,7 @@ public interface recipeRepository extends JpaRepository<recipe, Long>, JpaSpecif
 //                    "ORDER BY RCP_SEQ")
 //    List<recipe> findByRcpPatAndInfoEngLessThanEqual(String type, Float kcal, Pageable pageable);
 
-    List<recipe> findByRcpWayAndInfoEngLessThanEqual(String way, Float kcal, Pageable pageable);
+    List<recipe> findByRcpWayAndInfoEngLessThanEqual(String way, Float kcal);
 
 //    @Query(nativeQuery = true,
 //            value = "SELECT *\n" +
@@ -45,7 +45,7 @@ public interface recipeRepository extends JpaRepository<recipe, Long>, JpaSpecif
 //                    "ORDER BY RCP_SEQ")
 //    List<recipe> findByRcpWayAndInfoEngLessThanEqual(String way, Float kcal, Pageable pageable);
 
-    List<recipe> findByRcpWayAndRcpPatAndInfoEngLessThanEqual(String way, String type, Float kcal, Pageable pageable);
+    List<recipe> findByRcpWayAndRcpPatAndInfoEngLessThanEqual(String way, String type, Float kcal);
 
 //    @Query(nativeQuery = true,
 //            value = "SELECT *\n" +
@@ -56,7 +56,7 @@ public interface recipeRepository extends JpaRepository<recipe, Long>, JpaSpecif
 //                    "ORDER BY RCP_SEQ")
 //    List<recipe> findByRcpWayAndRcpPatAndInfoEngLessThanEqual(String way, String type, Float kcal, Pageable pageable);
 
-    List<recipe> findByInfoEngLessThanEqual(Float kcal, Pageable pageable);
+    List<recipe> findByInfoEngLessThanEqual(Float kcal);
 
 //    @Query(nativeQuery = true,
 //            value = "SELECT *\n" +
@@ -65,7 +65,7 @@ public interface recipeRepository extends JpaRepository<recipe, Long>, JpaSpecif
 //                    "ORDER BY RCP_SEQ")
 //    List<recipe> findByInfoEngLessThanEqual(Float kcal, Pageable pageable);
 
-    List<recipe> findByRcpPartsDtlsContaining(String value, Pageable pageable);
+    List<recipe> findByRcpPartsDtlsContaining(String value);
 
 //    @Query(nativeQuery = true,
 //            value = "SELECT *\n" +
@@ -74,7 +74,7 @@ public interface recipeRepository extends JpaRepository<recipe, Long>, JpaSpecif
 //                    "ORDER BY RCP_SEQ")
 //    List<recipe> findByRcpPartsDtlsContaining(String value, Pageable pageable);
 
-    List<recipe> findByRcpPartsDtlsContainingAndRcpPartsDtlsContaining(String value, String value2, Pageable pageable);
+    List<recipe> findByRcpPartsDtlsContainingAndRcpPartsDtlsContaining(String value, String value2);
 
 //    @Query(nativeQuery = true,
 //            value = "SELECT *\n" +
@@ -84,7 +84,7 @@ public interface recipeRepository extends JpaRepository<recipe, Long>, JpaSpecif
 //                    "ORDER BY RCP_SEQ")
 //    List<recipe> findByIngredients(String value1, String value2, Pageable pageable);
 
-    List<recipe> findByRcpPartsDtlsContainingAndRcpPartsDtlsContainingAndRcpPartsDtlsContaining(String value1, String value2, String value3, Pageable pageable);
+    List<recipe> findByRcpPartsDtlsContainingAndRcpPartsDtlsContainingAndRcpPartsDtlsContaining(String value1, String value2, String value3);
 
 //    @Query(nativeQuery = true,
 //            value = "SELECT *\n" +
@@ -95,7 +95,7 @@ public interface recipeRepository extends JpaRepository<recipe, Long>, JpaSpecif
 //                    "ORDER BY RCP_SEQ")
 //    List<recipe> findByIngredient3(String value1, String value2, String value3, Pageable pageable);
 
-    List<recipe> findByRcpPartsDtlsContainingAndRcpPartsDtlsContainingAndRcpPartsDtlsContainingAndRcpPartsDtlsContaining(String value1, String value2, String value3, String value4, Pageable pageable);
+    List<recipe> findByRcpPartsDtlsContainingAndRcpPartsDtlsContainingAndRcpPartsDtlsContainingAndRcpPartsDtlsContaining(String value1, String value2, String value3, String value4);
 
 
 }
