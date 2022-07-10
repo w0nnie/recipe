@@ -240,7 +240,6 @@ public class recipeController {
         recipe recipe = null;
 
         recipe = recipeRepository.findByRcpName(rcpName);
-        System.out.println("여기"+recipe);
 
         model.addAttribute(resultFrag, recipe);
 

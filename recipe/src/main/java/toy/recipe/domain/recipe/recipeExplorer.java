@@ -27,7 +27,6 @@ public class recipeExplorer {
 
             JSONParser jsonParser = new JSONParser();
             JSONObject jsonObject = (JSONObject)jsonParser.parse(result);
-            System.out.println("여기" + result);
 
         }catch(Exception e) {
             e.printStackTrace();
