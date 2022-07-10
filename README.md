@@ -38,9 +38,9 @@ recipe
 2. 레시피명 클릭시 해당 레시피의 조리과정이 나타난다.
 3. header 클릭시 해당 페이지로 이동한다.
 
-### 게시글 조회 페이지
+### 상세 레시피 조회 모달
 
-https://user-images.githubusercontent.com/87374274/178154113-4c0a2150-08d2-49d4-a10d-1b01b0eb41cf.png)
+![레시피 모달](https://user-images.githubusercontent.com/87374274/178154113-4c0a2150-08d2-49d4-a10d-1b01b0eb41cf.png)
 
 1. 상세 레시피를 조회한다.
 
