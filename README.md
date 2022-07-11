@@ -44,3 +44,8 @@ recipe
 
 1. 상세 레시피를 조회한다.
 
+# API 설계
+
+<img width="953" alt="스크린샷 2022-07-11 오전 10 25 37" src="https://user-images.githubusercontent.com/87374274/178172479-f30d39b1-2311-41a8-9704-2045b9ac1ac9.png">
+
+
