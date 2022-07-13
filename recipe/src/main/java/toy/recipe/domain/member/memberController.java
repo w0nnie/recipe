@@ -14,7 +14,7 @@ public class memberController {
 
 
 
-    @Autowired(required=false)
+    @Autowired
     private memberRepository memberRepository;
 
     @GetMapping("/join")
@@ -28,15 +28,29 @@ public class memberController {
     }
 
     @PostMapping("/login")
-    public RedirectView login(member member, Model model){
-        model.addAttribute("id",member.getId());
+    public RedirectView login(@RequestParam String id,@RequestParam String password, Model model){
+        member member;
         RedirectView error = new RedirectView("/errors",true);
         RedirectView recipe = new RedirectView("/recipe/main", true);
-        member = memberRepository.findById(member.getId());
+        member = memberRepository.findByIdAndPassword(id, password);
         if(member == null){
             return error;
         }
             return recipe;
+    }
+
+    @PostMapping("/idCheck")
+    @ResponseBody
+    public int idCheck(@RequestParam String id){
+
+        member member  = memberRepository.findById(id);
+        int cnt;
+        if(member == null){
+            cnt = 0;
+        }else {
+            cnt = 1;
+        }
+        return cnt;
     }
 
     @PostMapping("/join")

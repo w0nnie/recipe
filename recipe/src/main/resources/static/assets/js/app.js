@@ -3,6 +3,12 @@ const way = document.getElementById("way");
 const type = document.getElementById("type");
 const ingredient = document.getElementsByName("ingredient");
 
+
+function getCheckId(){
+  const id = document.getElementById("id").value;
+  getCheckIdAx(id);
+}
+
 function getProduct() {
   var path = "pages/main";
   var resultFrag = "getProductAxDiv";

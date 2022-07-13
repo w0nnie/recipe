@@ -16,14 +16,14 @@ public class member {
     @Id
     private String id;
 
-    private int password;
+    private String password;
 
 
     public String getId() {
         return id;
     }
 
-    public int getPassword() {
+    public String getPassword() {
         return password;
     }
 }

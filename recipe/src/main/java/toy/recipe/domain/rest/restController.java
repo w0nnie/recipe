@@ -44,7 +44,7 @@ public class restController {
     }
 
     @GetMapping("/member/{id}/{password}") //http://localhost:8080/api/member/admin/1
-    public ResponseEntity<? extends CommonDto> findById(@PathVariable String id, @PathVariable int password){
+    public ResponseEntity<? extends CommonDto> findById(@PathVariable String id, @PathVariable String password){
 
         member member = memberRepository.findByIdAndPassword(id,password);
         if(member == null){
@@ -63,7 +63,7 @@ public class restController {
     }
 
     @PatchMapping("/member/{id}/{password}")
-    public ResponseEntity<? extends CommonDto> update(@PathVariable String id, @PathVariable int password){
+    public ResponseEntity<? extends CommonDto> update(@PathVariable String id, @PathVariable String password){
 
         member member = memberRepository.findById(id);
 
